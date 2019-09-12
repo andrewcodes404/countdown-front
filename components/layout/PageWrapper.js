@@ -31,42 +31,46 @@ class PageWrapper extends React.Component {
     render() {
         // const loggedIn = false
         return (
-            <Query query={USER_LOGGEDIN}>
-                {({ data: { userLoggedIn }, error, loading }) => {
-                    // make sure you return something when loading or the pages will render first
-                    if (loading) return null
-                    if (error) return <p>Error: {error.message}</p>
+            <div>
+                <Query query={USER_LOGGEDIN}>
+                    {({ data: { userLoggedIn }, error, loading }) => {
+                        // DON'T DO THIS 👇 if you return null you will get the error...
+                        // Error: Did not expect server HTML to contain a <div> in <div>
+                        // if (loading) return null
 
-                    //don't use data.user as a bool ☠️
-                    var loggedIn = false
-                    userLoggedIn ? (loggedIn = true) : (loggedIn = false)
-                    // console.log('loggedIn ...from PageWrapper = ', loggedIn)
+                        if (error) return <p>Error: {error.message}</p>
 
-                    return (
-                        <PgWrapper>
-                            <Meta />
-                            <Navigation
-                                loggedIn={loggedIn}
-                                user={userLoggedIn}
-                            />
-                            <Content>
-                                <div className="page-wrapper">
-                                    {React.Children.map(
-                                        this.props.children,
-                                        child =>
-                                            React.cloneElement(child, {
-                                                loggedIn,
-                                                userLoggedIn,
-                                            })
-                                    )}
-                                </div>
-                            </Content>
-                            <div className="push-down"></div>
-                            <Footer />
-                        </PgWrapper>
-                    )
-                }}
-            </Query>
+                        //don't use data.user as a bool ☠️
+                        var loggedIn = false
+                        userLoggedIn ? (loggedIn = true) : (loggedIn = false)
+                        // console.log('loggedIn ...from PageWrapper = ', loggedIn)
+
+                        return (
+                            <PgWrapper>
+                                <Meta />
+                                <Navigation
+                                    loggedIn={loggedIn}
+                                    user={userLoggedIn}
+                                />
+                                <Content>
+                                    <div className="page-wrapper">
+                                        {React.Children.map(
+                                            this.props.children,
+                                            child =>
+                                                React.cloneElement(child, {
+                                                    loggedIn,
+                                                    userLoggedIn,
+                                                })
+                                        )}
+                                    </div>
+                                </Content>
+                                <div className="push-down"></div>
+                                <Footer />
+                            </PgWrapper>
+                        )
+                    }}
+                </Query>
+            </div>
         )
     }
 }
