@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Query } from 'react-apollo'
 import { USER_LOGGEDIN } from '../../lib/graphqlTags'
-
+import { withRouter } from 'next/router'
 // import Spinner from './lib/Spinner'
 // comps
 import Meta from './Meta'
@@ -30,49 +30,75 @@ const Content = styled.div`
 class PageWrapper extends React.Component {
     render() {
         // const loggedIn = false
+
+        // have no pagewrapper for CDW page
+        if (this.props.router.pathname === '/cdw') {
+            return (
+                <>
+                    {React.Children.map(this.props.children, child =>
+                        React.cloneElement(child, {})
+                    )}
+                </>
+            )
+        }
+
+        if (this.props.router.pathname === '/') {
+            return (
+                <>
+                    {React.Children.map(this.props.children, child =>
+                        React.cloneElement(child, {})
+                    )}
+                </>
+            )
+        }
+
         return (
-            <Query query={USER_LOGGEDIN}>
-                {({ data: { userLoggedIn }, error, loading }) => {
-                    // make sure you return something when loading or the pages will render first
-                    if (loading) return null
-                    if (error) return <p>Error: {error.message}</p>
+            <div>
+                <Query query={USER_LOGGEDIN}>
+                    {({ data: { userLoggedIn }, error, loading }) => {
+                        // stop everything until you get the data back
+                        if (loading) return null
 
-                    //don't use data.user as a bool ☠️
-                    var loggedIn = false
-                    userLoggedIn ? (loggedIn = true) : (loggedIn = false)
-                    // console.log('loggedIn ...from PageWrapper = ', loggedIn)
+                        if (error) return <p>Error: {error.message}</p>
 
-                    return (
-                        <PgWrapper>
-                            <Meta />
-                            <Navigation
-                                loggedIn={loggedIn}
-                                user={userLoggedIn}
-                            />
-                            <Content>
-                                <div className="page-wrapper">
-                                    {React.Children.map(
-                                        this.props.children,
-                                        child =>
-                                            React.cloneElement(child, {
-                                                loggedIn,
-                                                userLoggedIn,
-                                            })
-                                    )}
-                                </div>
-                            </Content>
-                            <div className="push-down"></div>
-                            <Footer />
-                        </PgWrapper>
-                    )
-                }}
-            </Query>
+                        //don't use data.user as a bool ☠️
+                        var loggedIn = false
+                        userLoggedIn ? (loggedIn = true) : (loggedIn = false)
+                        // console.log('loggedIn ...from PageWrapper = ', loggedIn)
+
+                        return (
+                            <PgWrapper>
+                                <Meta />
+                                <Navigation
+                                    loggedIn={loggedIn}
+                                    user={userLoggedIn}
+                                />
+                                <Content>
+                                    <div className="page-wrapper">
+                                        {React.Children.map(
+                                            this.props.children,
+                                            child =>
+                                                React.cloneElement(child, {
+                                                    loggedIn,
+                                                    userLoggedIn,
+                                                })
+                                        )}
+                                    </div>
+                                </Content>
+                                <div className="push-down"></div>
+                                <Footer />
+                            </PgWrapper>
+                        )
+                    }}
+                </Query>
+            </div>
         )
     }
 }
 
 PageWrapper.propTypes = {
     children: PropTypes.node.isRequired,
+    router: PropTypes.object,
 }
 
-export default PageWrapper
+export default withRouter(PageWrapper)

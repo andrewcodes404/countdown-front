@@ -11,7 +11,7 @@ const Meta = () => (
         <meta charSet="utf-8" />
 
         <link
-            href="https://fonts.googleapis.com/css?family=Montserrat:200,400,600"
+            href="https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700&display=swap"
             rel="stylesheet"
         ></link>
 
@@ -28,6 +28,11 @@ const Meta = () => (
         ></script>
 
         {/* FAVICON --- FAVICON --- FAVICON --- FAVICON --- FAVICON ---  */}
+        <link
+            rel="shortcut icon"
+            type="image/png"
+            href="./static/favicon.png"
+        ></link>
 
         {/* <script
             async
