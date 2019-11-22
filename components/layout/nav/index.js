@@ -78,6 +78,19 @@ class Index extends React.Component {
                     </Link>
                 )}
 
+
+                {loggedIn && (
+                    <Link href="/sortable">
+                        <a
+                            className={
+                                asPath === '/sortable' ? 'current-page' : ''
+                            }
+                        >
+                            sortable
+                        </a>
+                    </Link>
+                )}
+
                 {loggedIn && (
                     <Link href="/build">
                         <a

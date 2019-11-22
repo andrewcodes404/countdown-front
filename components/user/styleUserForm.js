@@ -39,13 +39,14 @@ export const FormWrapper = styled.div`
     justify-content: center;
     align-items: center;
     flex: 1;
-    margin-top: 100px;
+    /* margin-top: 100px; */
 `
 
 export const Form = styled.form`
     width: 80%;
     margin: 0 auto;
     width: 300px;
+
     display: flex;
     flex-direction: column;
     .submit-btn {

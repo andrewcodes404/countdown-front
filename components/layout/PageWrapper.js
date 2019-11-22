@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Query } from 'react-apollo'
 import { USER_LOGGEDIN } from '../../lib/graphqlTags'
-
+import { withRouter } from 'next/router'
 // import Spinner from './lib/Spinner'
 // comps
 import Meta from './Meta'
@@ -30,13 +30,34 @@ const Content = styled.div`
 class PageWrapper extends React.Component {
     render() {
         // const loggedIn = false
+
+        // have no pagewrapper for CDW page
+        if (this.props.router.pathname === '/cdw') {
+            return (
+                <>
+                    {React.Children.map(this.props.children, child =>
+                        React.cloneElement(child, {})
+                    )}
+                </>
+            )
+        }
+
+        if (this.props.router.pathname === '/') {
+            return (
+                <>
+                    {React.Children.map(this.props.children, child =>
+                        React.cloneElement(child, {})
+                    )}
+                </>
+            )
+        }
+
         return (
             <div>
                 <Query query={USER_LOGGEDIN}>
                     {({ data: { userLoggedIn }, error, loading }) => {
-                        // DON'T DO THIS 👇 if you return null you will get the error...
-                        // Error: Did not expect server HTML to contain a <div> in <div>
-                        // if (loading) return null
+                        // stop everything until you get the data back
+                        if (loading) return null
 
                         if (error) return <p>Error: {error.message}</p>
 
@@ -77,6 +98,7 @@ class PageWrapper extends React.Component {
 
 PageWrapper.propTypes = {
     children: PropTypes.node.isRequired,
+    router: PropTypes.object,
 }
 
-export default PageWrapper
+export default withRouter(PageWrapper)

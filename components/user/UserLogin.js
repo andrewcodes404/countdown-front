@@ -10,9 +10,12 @@ import TextField from '@material-ui/core/TextField'
 import { FormWrapper, Form } from './styleUserForm'
 
 class UserLogin extends Component {
-    state = {
-        email: '',
-        password: 'radar',
+    constructor(props) {
+        super(props)
+        this.state = {
+            email: '',
+            password: 'radar',
+        }
     }
 
     handleChange = e => {
@@ -32,10 +35,12 @@ class UserLogin extends Component {
                     mutation={USER_LOGIN}
                     variables={this.state}
                     refetchQueries={[{ query: USER_LOGGEDIN }]}
+                    awaitRefetchQueries
                 >
                     {(userLogin, { error, loading }) => (
                         <div>
-                            <h2>Login here...</h2>
+                            <h2>Have an account?</h2>
+                            <h2> Login here...</h2>
                             {loading && <p>Loading...</p>}
                             {error && (
                                 <div>
@@ -54,11 +59,16 @@ class UserLogin extends Component {
                                 method="post"
                                 onSubmit={async e => {
                                     e.preventDefault()
-                                    await userLogin()
+
                                     this.setState({
                                         email: '',
                                         password: '',
                                     })
+
+                                    await userLogin()
+                                    // could use 'onCompleted' in the muatation instead?
+                                    // https://www.apollographql.com/docs/react/essentials/mutations/
+
                                     Router.push('/account')
                                 }}
                             >
@@ -97,12 +107,12 @@ class UserLogin extends Component {
                                     Login
                                 </Button>
                             </Form>
-                            <p>
+                            {/* <p>
                                 Don&apos;t have an account
                                 <Link href="/register">
                                     <a> register here</a>
                                 </Link>
-                            </p>
+                            </p> */}
                         </div>
                     )}
                 </Mutation>
