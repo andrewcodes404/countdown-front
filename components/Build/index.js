@@ -62,8 +62,6 @@ class Build extends React.Component {
         this.setState({
             currentIndexTotal,
         })
-
-        console.log('this.state 👈 = ', this.state)
     }
 
     componentDidUpdate(prevProps) {
@@ -136,7 +134,7 @@ class Build extends React.Component {
                 {({ data, error, loading }) => {
                     if (loading) return <p>Loading...</p>
                     if (error) return <p>Error: {error.message}</p>
-                    console.log('data.libraryItems = ', data.libraryItems)
+               
 
                     const imgCount = data.libraryItems.length
 

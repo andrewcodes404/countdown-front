@@ -63,7 +63,7 @@ class CDW extends React.Component {
             })
             .then(result => {
                 const user = result.data.users[0]
-                console.log('user = ', user)
+
                 const randomizedLibrary = user.library.sort(function() {
                     return 0.5 - Math.random()
                 })
@@ -81,19 +81,13 @@ class CDW extends React.Component {
 
     handleUserIndexClick = index => {
         if (index == day) {
-            this.setState(
-                {
-                    showItem: index,
-                },
-                () => {
-                    console.log('this.state = ', this.state)
-                }
-            )
+            this.setState({
+                showItem: index,
+            })
         }
     }
 
     handleShowLightbox = url => {
-        console.log('url = ', url)
         this.setState({
             lightbox: url,
         })
@@ -111,8 +105,6 @@ class CDW extends React.Component {
     }
 
     render() {
-        console.log('theDate = ', theDate)
-
         return (
             <PageWrapper>
                 {/* THE TIMER --- THE TIMER --- THE TIMER */}

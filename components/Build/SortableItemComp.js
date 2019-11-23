@@ -176,26 +176,26 @@ class SortableItemComp extends React.Component {
         })
     }
 
-    deleteLibraryItem = () => {
-        this.props.client.mutate({
-            mutation: DELETE_LIBRARY_ITEM,
-            variables: {
-                id: this.props.image.id,
-            },
-            refetchQueries: () => [
-                {
-                    query: GET_LIBRARY_ITEMS_WHERE_ID,
-                    variables: {
-                        id: this.props.id,
-                    },
-                },
-            ],
-        })
+    // deleteLibraryItem = () => {
+    //     this.props.client.mutate({
+    //         mutation: DELETE_LIBRARY_ITEM,
+    //         variables: {
+    //             id: this.props.image.id,
+    //         },
+    //         refetchQueries: () => [
+    //             {
+    //                 query: GET_LIBRARY_ITEMS_WHERE_ID,
+    //                 variables: {
+    //                     id: this.props.id,
+    //                 },
+    //             },
+    //         ],
+    //     })
 
-        this.setState({
-            showModal: false,
-        })
-    }
+    //     this.setState({
+    //         showModal: false,
+    //     })
+    // }
 
     render() {
         const {
@@ -218,7 +218,7 @@ class SortableItemComp extends React.Component {
                                     className="button button--yes"
                                     // onClick={this.handleYesDelete}
                                     onClick={() => {
-                                        this.deleteLibraryItem()
+                                        this.props.deleteLibraryItem(id)
                                     }}
                                 >
                                     Yes
