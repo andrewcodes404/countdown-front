@@ -11,8 +11,9 @@ import FileCopy from '@material-ui/icons/FileCopy'
 import styled from 'styled-components'
 
 const Message = styled.div`
+    margin: 30px 0;
     .message-input {
-        width: 400px;
+        margin-bottom: 30px;
     }
 `
 class comp_name extends React.Component {
@@ -78,6 +79,7 @@ class comp_name extends React.Component {
                                     value={this.state.message}
                                     onChange={this.handleChange}
                                     multiline={true}
+                                    InputProps={{ style: { fontSize: 40 } }}
                                     // rows={2}
                                     fullWidth
                                     // rowsMax={4}

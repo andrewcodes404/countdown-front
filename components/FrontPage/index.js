@@ -6,7 +6,6 @@ import React from 'react'
 // import Register from './authorise/Register'
 // import Navigation from './Navigation'
 // import Footer from './Footer'
-import ScrollIntoView from 'react-scroll-into-view'
 
 import UserRegister from '../user/UserRegister'
 import UserLogin from '../user/UserLogin'
@@ -17,32 +16,22 @@ import {
     Headlines,
     ThreeSteps,
     Login,
-    Navigation,
 } from './frontPageStyle'
 
 //files
-const calVid = './static/cal.mov'
+const calVid = './static/cal.mp4'
 
 const videoBkg = './static/cal.png'
 
 class Home extends React.Component {
     constructor(props) {
         super(props)
+        console.log('props = ', props)
     }
 
     render() {
         return (
             <PageWrapper>
-                <Navigation>
-                    <div className="menu">
-                        <h1>CDWow</h1>
-
-                        <ScrollIntoView selector="#login">
-                            <p>Register/Login</p>
-                        </ScrollIntoView>
-                    </div>
-                </Navigation>
-
                 <Banner>
                     {/* <div className="banner-alert">
                         <p>
@@ -80,8 +69,8 @@ class Home extends React.Component {
                 </Headlines>
 
                 <ThreeSteps>
-                    <div className="x-page-content">
-                        <div className="the-three-steps">
+                    <div className="three-steps-wrapper">
+                        <div className="three-steps">
                             <h2 className="three-steps-headline">
                                 Your countdown calendar in three easy steps:
                             </h2>

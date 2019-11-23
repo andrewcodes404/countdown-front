@@ -71,3 +71,17 @@ export const Form = styled.form`
         }
     }
 `
+
+export const SuccessMessage = styled.div`
+    text-align: center;
+
+    h2 {
+        margin: 5px;
+        line-height: 1;
+        
+    }
+
+    p {
+        margin: 20px 0;
+    }
+`

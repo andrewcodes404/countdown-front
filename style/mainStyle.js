@@ -66,12 +66,12 @@ a,
 a:link,
 a:visited,
 a:active {
-    color: orange;
+    color: black;
     transition: 0.3s;
     cursor: pointer;
     text-decoration: none;
     &:hover {
-        color: orangered;
+        color: ${props => props.theme.green};
     }
 }
 

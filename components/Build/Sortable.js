@@ -4,30 +4,20 @@ import { SortableContainer, SortableElement } from 'react-sortable-hoc'
 import arrayMove from 'array-move'
 import { withApollo, Query } from 'react-apollo'
 import gql from 'graphql-tag'
-import { GET_LIBRARY_ITEMS_WHERE_ID } from '../../lib/graphqlTags'
+import { UPDATE_LIBRARY_ITEM } from '../../lib/graphqlTags'
 import SortableItemComp from './SortableItemComp'
 
 import styled from 'styled-components'
 
 const StyledContainer = styled.div`
-    margin-top: 60px;
     display: flex;
     flex-wrap: wrap;
-    background: orange;
-    max-width: 900px;
-    margin: 0 auto;
+    background: ${props => props.theme.green};
+    /* max-width: 900px; */
+    margin: 60px auto;
 `
 
-const UPDATE_LIBRARY_ITEM = gql`
-    mutation UPDATE_LIBRARY_ITEM($id: ID!, $index: Int!) {
-        updateLibraryItem(id: $id, index: $index) {
-            id
-            index
-        }
-    }
-`
-
-const SortableList = SortableContainer(({ items }) => {
+const SortableList = SortableContainer(({ items, id }) => {
     return (
         <StyledContainer>
             {items.map((image, index) => {
@@ -37,6 +27,7 @@ const SortableList = SortableContainer(({ items }) => {
                         index={index}
                         image={image}
                         myIndex={index}
+                        id={id}
                     />
                 )
             })}
@@ -63,6 +54,7 @@ class Sortable extends React.Component {
         if (this.props.libraryItems !== prevProps.libraryItems) {
             const library = this.props.libraryItems
             library.sort((a, b) => (a.index > b.index ? 1 : -1))
+
             this.setState({
                 items: library,
             })
@@ -111,6 +103,7 @@ class Sortable extends React.Component {
                         onSortMove={this.onSortMove}
                         axis="xy"
                         distance={1}
+                        id={id}
                     />
                 </div>
             </>

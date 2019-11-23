@@ -6,32 +6,14 @@ import styled from 'styled-components'
 // $media-lrg: 992px;
 // $media-lrg-xl: 1200px;
 
+// @media (min-width: 576px) {
+//          }
+
 export const PageWrapper = styled.div`
     min-height: 100vh;
     display: flex;
     flex-direction: column;
     margin-bottom: 200px;
-`
-
-export const Navigation = styled.div`
-    .menu {
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 90%;
-        margin: 0 auto;
-        padding: 10px 0;
-        h1 {
-            margin: 0;
-        }
-
-        p {
-            cursor: pointer;
-            &:hover {
-                color: ${props => props.theme.green};
-            }
-        }
-    }
 `
 
 export const Banner = styled.div`
@@ -78,7 +60,7 @@ export const Banner = styled.div`
     .banner-alert {
         width: 100%;
         /* background-color: ${props => props.theme.red};; */
-        background-color: ${props => props.theme.green};;
+        background-color: ${props => props.theme.green};
         background-color: green;
         text-align: center;
         border: 1px solid #000;
@@ -102,16 +84,16 @@ export const Banner = styled.div`
 export const Headlines = styled.div`
     .headline-strip {
         background-color: ${props => props.theme.red};
-        text-align: center;
-        padding: 1rem 0.5rem;
 
-        @media (min-width: 576px) {
-            padding: 1.5rem 0;
-        }
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100px;
 
         h1 {
             line-height: 1;
-            margin-bottom: 0;
+            margin: 0;
             color: white;
         }
     }
@@ -127,14 +109,14 @@ export const Headlines = styled.div`
 
         h2 {
             line-height: 1;
-            margin-bottom: 0;
+            margin: 0;
             color: white;
         }
     }
 `
 
 export const ThreeSteps = styled.div`
-    .x-page-content {
+    .three-steps-wrapper {
         width: 90%;
         max-width: 600px;
         margin: auto;
@@ -152,12 +134,12 @@ export const ThreeSteps = styled.div`
         }
     }
 
-    .the-three-steps {
+    .three-steps {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
         margin: 0;
-        padding: 0;
+        padding: 20px;
 
         @media (min-width: 576px) {
             justify-content: space-between;
@@ -166,8 +148,11 @@ export const ThreeSteps = styled.div`
 
     .three-steps-headline {
         width: 100%;
-        // text-align: center;
-        margin: 1rem 0 2rem;
+        text-align: center;
+        margin: 30px 0px 60px;
+
+        font-size: 30px;
+        font-weight: bold;
     }
 
     .step-item {
@@ -183,6 +168,10 @@ export const ThreeSteps = styled.div`
         padding: 1rem 0.5rem 0.5rem;
         margin-bottom: 1rem;
         box-shadow: 2px 2px 13px 0px rgba(0, 0, 0, 0.05);
+
+        p {
+            font-size: 24px;
+        }
     }
 
     .step-number {
@@ -207,9 +196,23 @@ export const ThreeSteps = styled.div`
 `
 
 export const Login = styled.div`
+    width: 90%;
+    max-width: 600px;
+    margin: auto;
+    padding: 1rem 0;
+
+    @media (min-width: 576px) {
+        margin: auto;
+        padding: 1rem 0;
+    }
+
+    @media (min-width: 768px) {
+        max-width: 900px;
+        margin: auto;
+        padding: 2rem 0;
+    }
+
     display: flex;
-    width: 65%;
-    margin: 0 auto;
-    border: 1px solid #000;
     align-items: flex-start;
+    justify-content: space-between;
 `

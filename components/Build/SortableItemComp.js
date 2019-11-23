@@ -2,9 +2,13 @@ import React from 'react'
 import gql from 'graphql-tag'
 // import { withApollo } from 'react-apollo'
 import { SortableElement } from 'react-sortable-hoc'
-import { USER_LOGGEDIN } from '../../lib/graphqlTags'
+import {
+    USER_LOGGEDIN,
+    GET_LIBRARY_ITEMS_WHERE_ID,
+    DELETE_LIBRARY_ITEM,
+} from '../../lib/graphqlTags'
 
-import { Mutation } from 'react-apollo'
+import { withApollo } from 'react-apollo'
 // material ui
 import Delete from '@material-ui/icons/Delete'
 
@@ -14,11 +18,15 @@ import styled from 'styled-components'
 const StyledItem = styled.div`
     cursor: pointer;
     /* min-width: 200px; */
-    width: 20%;
+    width: 25%;
     /* height: 200px; */
 
+    @media (min-width: 576px) {
+        width: 16.666%;
+    }
+
     .dummy-div-for-height {
-        margin-top: 75%;
+        margin-top: 85%;
     }
 
     position: relative;
@@ -40,21 +48,31 @@ const StyledItem = styled.div`
     .number {
         position: absolute;
         z-index: 1;
-
         top: 0;
-        /* bottom: 0; */
         left: 0;
-        /* right: 0; */
-        background: rgba(252, 186, 3, 0.65);
-        height: 40px;
-        width: 40px;
+
+        background: ${props => props.theme.green};
+
+        height: 22px;
+        width: 22px;
+
         border-bottom-right-radius: 10px;
         display: flex;
         justify-content: center;
         align-items: center;
         span {
-            font-size: 30px;
-            font-weight: 800;
+            font-size: 14px;
+            margin: 0;
+            font-weight: 400;
+            color: white;
+        }
+
+        @media (min-width: 576px) {
+            height: 40px;
+            width: 40px;
+            span {
+                font-size: 20px;
+            }
         }
     }
 `
@@ -64,7 +82,7 @@ const Deletecan = styled.div`
     z-index: 1;
     bottom: 0;
     right: 0;
-    background: rgba(252, 186, 3, 0.65);
+    background: ${props => props.theme.green};
     height: 40px;
     width: 40px;
     border-top-left-radius: 10px;
@@ -78,12 +96,12 @@ const Deletecan = styled.div`
     ${StyledItem}:hover & {
         opacity: 1;
     }
-
+    color: white;
     &:hover {
         color: orangered;
     }
     .icon {
-        font-size: 30px;
+        font-size: 25px;
     }
 `
 
@@ -98,18 +116,18 @@ const Modal = styled.div`
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center; */
+    /* align-items: flex-start; */
 
     .content {
-        width: 80%;
+        width: 90%;
         margin: 0 auto;
         text-align: center;
     }
 
     .buttons {
         width: 70%;
-        margin: 20px auto 0;
+        margin: 10px auto 0;
         display: flex;
         justify-content: space-between;
     }
@@ -131,15 +149,6 @@ const Modal = styled.div`
         &:hover {
             background: tomato;
             color: white;
-        }
-    }
-`
-
-const DELETE_LIBRARY_ITEM = gql`
-    mutation DELETE_LIBRARY_ITEM($id: ID!) {
-        deleteLibraryItem(id: $id) {
-            id
-            secure_url
         }
     }
 `
@@ -167,6 +176,27 @@ class SortableItemComp extends React.Component {
         })
     }
 
+    deleteLibraryItem = () => {
+        this.props.client.mutate({
+            mutation: DELETE_LIBRARY_ITEM,
+            variables: {
+                id: this.props.image.id,
+            },
+            refetchQueries: () => [
+                {
+                    query: GET_LIBRARY_ITEMS_WHERE_ID,
+                    variables: {
+                        id: this.props.id,
+                    },
+                },
+            ],
+        })
+
+        this.setState({
+            showModal: false,
+        })
+    }
+
     render() {
         const {
             myIndex,
@@ -179,89 +209,21 @@ class SortableItemComp extends React.Component {
                 {this.state.showModal && (
                     <Modal>
                         <div className="content">
-                            <h5>Are you sure you want to delete this?</h5>
-                            .id
+                            <h5>Delete this image?</h5>
+
                             <div className="buttons">
                                 {/* <DeleteImage id={image.id} /> */}
-                                <Mutation
-                                    mutation={DELETE_LIBRARY_ITEM}
-                                    variables={{ id: id }}
-                                    refetchQueries={[
-                                        {
-                                            query: USER_LOGGEDIN,
-                                        },
-                                    ]}
-                                    awaitRefetchQueries={true}
-                                    update={(
-                                        cache,
-                                        { data: { deleteLibraryItem } }
-                                    ) => {
-                                        //the item we deleted with the id init👇
-                                        console.log(
-                                            'deleteLibraryItem.id = ',
-                                            deleteLibraryItem.id
-                                        )
-                                        //the current cach that we want to update 👇
-                                        const currentCache = cache.readQuery({
-                                            query: USER_LOGGEDIN,
-                                        })
 
-                                        console.log(
-                                            'currentCache.userLoggedIn.library = ',
-                                            currentCache.userLoggedIn.library
-                                        )
-
-                                        const library =
-                                            currentCache.userLoggedIn.library
-
-                                        const updatedLibrary = library.filter(
-                                            x => {
-                                                return (
-                                                    x.id != deleteLibraryItem.id
-                                                )
-                                            }
-                                        )
-
-                                        console.log(
-                                            'updatedLibrary = ',
-                                            updatedLibrary
-                                        )
-
-                                        currentCache.userLoggedIn.library = updatedLibrary
-                                        const user = currentCache.userLoggedIn
-
-                                        console.log('user = ', user)
-
-                                        cache.writeQuery({
-                                            query: USER_LOGGEDIN,
-                                            data: {
-                                                userLoggedIn: user,
-                                            },
-                                        })
-                                    }}
-                                    onCompleted={() => {
-                                        console.log('it completed')
-                                        console.log('this.state = ', this.state)
-                                        console.log('this.props = ', this.props)
-                                        this.setState({
-                                            showModal: false,
-                                        })
+                                <button
+                                    className="button button--yes"
+                                    // onClick={this.handleYesDelete}
+                                    onClick={() => {
+                                        this.deleteLibraryItem()
                                     }}
                                 >
-                                    {(deleteLibraryItem, { loading, data }) => {
-                                        return (
-                                            <button
-                                                className="button button--yes"
-                                                // onClick={this.handleYesDelete}
-                                                onClick={() => {
-                                                    deleteLibraryItem()
-                                                }}
-                                            >
-                                                Yes
-                                            </button>
-                                        )
-                                    }}
-                                </Mutation>
+                                    Yes
+                                </button>
+
                                 <button
                                     className="button button--no"
                                     onClick={this.handleNoDelete}
@@ -289,5 +251,5 @@ class SortableItemComp extends React.Component {
     }
 }
 
-export default SortableElement(SortableItemComp)
-// export default withApollo(SortableElement(SortableItemComp))
+// export default SortableElement(SortableItemComp)
+export default withApollo(SortableElement(SortableItemComp))
