@@ -168,8 +168,18 @@ const coverFilename = [
 ]
 
 class CoverPicker extends React.Component {
-    handleCoverClick = url => {
-        console.log('url = ', url)
+    constructor(props) {
+        super(props)
+
+        this.state = {
+            borderMe: this.props.user.cover,
+        }
+    }
+
+    changeCoverPick = url => {
+        this.setState({
+            borderMe: url,
+        })
     }
 
     render() {
@@ -195,11 +205,12 @@ class CoverPicker extends React.Component {
                                 return (
                                     <div
                                         onClick={() => {
+                                            this.changeCoverPick(el.imgFull)
                                             updateUser()
                                         }}
                                         // className="covers-item"
                                         className={`covers-item ${
-                                            this.props.user.cover === el.imgFull
+                                            this.state.borderMe === el.imgFull
                                                 ? 'make-red'
                                                 : 'boo'
                                         }`}

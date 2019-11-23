@@ -3,8 +3,12 @@ import PropTypes from 'prop-types'
 import { SortableContainer, SortableElement } from 'react-sortable-hoc'
 import arrayMove from 'array-move'
 import { withApollo, Query } from 'react-apollo'
-import gql from 'graphql-tag'
-import { UPDATE_LIBRARY_ITEM } from '../../lib/graphqlTags'
+
+import {
+    UPDATE_LIBRARY_ITEM,
+    DELETE_LIBRARY_ITEM,
+    GET_LIBRARY_ITEMS_WHERE_ID,
+} from '../../lib/graphqlTags'
 import SortableItemComp from './SortableItemComp'
 
 import styled from 'styled-components'
@@ -17,7 +21,7 @@ const StyledContainer = styled.div`
     margin: 60px auto;
 `
 
-const SortableList = SortableContainer(({ items, id }) => {
+const SortableList = SortableContainer(({ items, id, deleteLibraryItem }) => {
     return (
         <StyledContainer>
             {items.map((image, index) => {
@@ -28,6 +32,7 @@ const SortableList = SortableContainer(({ items, id }) => {
                         image={image}
                         myIndex={index}
                         id={id}
+                        deleteLibraryItem={deleteLibraryItem}
                     />
                 )
             })}
@@ -88,6 +93,40 @@ class Sortable extends React.Component {
         )
     }
 
+    deleteLibraryItem = imageId => {
+        // this.setState({
+        //     items: library,
+        // })
+
+        // Remove the image from the array first for instant result on the frontend
+        const Index = this.state.items.findIndex(x => x.id === imageId)
+        this.state.items.splice(Index, 1)
+
+        // The remove from the DB
+        this.props.client.mutate({
+            mutation: DELETE_LIBRARY_ITEM,
+            variables: {
+                id: imageId,
+            },
+            refetchQueries: () => [
+                {
+                    query: GET_LIBRARY_ITEMS_WHERE_ID,
+                    variables: {
+                        id: this.props.user.id,
+                    },
+                },
+            ],
+        })
+
+        this.setState({
+            showModal: false,
+        })
+    }
+
+    myAlert = () => {
+        alert('haaa')
+    }
+
     render() {
         // console.log('this .state = ', this.state)
         const { id } = this.props.user
@@ -104,6 +143,7 @@ class Sortable extends React.Component {
                         axis="xy"
                         distance={1}
                         id={id}
+                        deleteLibraryItem={this.deleteLibraryItem}
                     />
                 </div>
             </>
