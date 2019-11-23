@@ -1,5 +1,5 @@
 import React from 'react'
-import UserLogin from '../components/user/UserLogin'
+import UserLoginNewRegister from '../components/user/UserLoginNewRegister'
 import PropTypes from 'prop-types'
 import Router from 'next/router'
 
@@ -11,7 +11,7 @@ class Index extends React.Component {
     }
     render() {
         if (this.props.loggedIn) return null
-        return <UserLogin />
+        return <UserLoginNewRegister />
     }
 }
 

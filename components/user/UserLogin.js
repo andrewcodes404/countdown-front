@@ -69,7 +69,7 @@ class UserLogin extends Component {
                                     // could use 'onCompleted' in the muatation instead?
                                     // https://www.apollographql.com/docs/react/essentials/mutations/
 
-                                    Router.push('/account')
+                                    Router.push('/build')
                                 }}
                             >
                                 <TextField

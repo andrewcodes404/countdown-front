@@ -34,7 +34,7 @@ class Timer extends React.Component {
                     <TimerStyled>
                         <div className="message">
                             <h1>
-                                Timer to {this.props.name}'s advent calendar
+                                {this.props.name}'s calendar is reaady in...
                             </h1>
                             <Countdown
                                 date={timerTarget}

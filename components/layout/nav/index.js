@@ -6,34 +6,37 @@ import Link from 'next/link'
 import Router from 'next/router'
 import { withRouter } from 'next/router'
 import styled from 'styled-components'
+import ScrollIntoView from 'react-scroll-into-view'
 
 const Nav = styled.div`
     display: flex;
-    width: 95%;
-    max-width: 1200px;
+    align-items: center;
+    justify-content: space-between;
+    width: 90%;
     margin: 0 auto;
     padding: 20px 0;
-
-    /* justify-content: center; */
-    align-items: center;
-    a {
-        margin-right: 10px;
-        line-height: 1;
-    }
-    p {
-        color: grey;
-        margin-right: 10px;
+    h1 {
+        margin: 0;
     }
 
-    .logout {
-        cursor: pointer;
-        &:hover {
-            color: ${props => props.theme.hoverColor};
+    .nav--logo {
+    }
+
+    .nav--menu {
+        display: flex;
+        align-items: center;
+        /* width: 240px; */
+        /* justify-content: space-between; */
+
+        p,
+        a {
+            cursor: pointer;
+            margin: 0 0 0 20px;
+
+            &:hover {
+                color: ${props => props.theme.green};
+            }
         }
-    }
-
-    .current-page {
-        color: orange;
     }
 `
 
@@ -50,80 +53,49 @@ class Index extends React.Component {
 
         return (
             <Nav>
-                <Link href="/">
-                    <a className={asPath === '/' ? 'current-page' : ''}>home</a>
-                </Link>
-
-                {!loggedIn && (
-                    <Link href="/login">
-                        <a
-                            className={
-                                asPath === '/login' ? 'current-page' : ''
-                            }
-                        >
-                            login/register
+                <div className="nav--logo">
+                    <Link href="/">
+                        <a>
+                            <h1>CDWow</h1>
                         </a>
                     </Link>
-                )}
+                </div>
 
-                {loggedIn && (
-                    <Link href="/account">
-                        <a
-                            className={
-                                asPath === '/account' ? 'current-page' : ''
-                            }
+                <div className="nav--menu">
+                    {!loggedIn && (
+                        <ScrollIntoView selector="#login">
+                            <p>Register/Login</p>
+                        </ScrollIntoView>
+                    )}
+
+                    {loggedIn && (
+                        <Link href="/build">
+                            <a>build</a>
+                        </Link>
+                    )}
+
+                    {loggedIn && (
+                        <Mutation
+                            mutation={USER_LOGOUT}
+                            refetchQueries={[{ query: USER_LOGGEDIN }]}
                         >
-                            account
-                        </a>
-                    </Link>
-                )}
+                            {userLogout => (
+                                <a
+                                    className="logout"
+                                    onClick={async () => {
+                                        // eslint-disable-next-line no-unused-vars
+                                        const res = await userLogout()
+                                        Router.push('/')
+                                    }}
+                                >
+                                    logout
+                                </a>
+                            )}
+                        </Mutation>
+                    )}
 
-
-                {loggedIn && (
-                    <Link href="/sortable">
-                        <a
-                            className={
-                                asPath === '/sortable' ? 'current-page' : ''
-                            }
-                        >
-                            sortable
-                        </a>
-                    </Link>
-                )}
-
-                {loggedIn && (
-                    <Link href="/build">
-                        <a
-                            className={
-                                asPath === '/build' ? 'current-page' : ''
-                            }
-                        >
-                            build
-                        </a>
-                    </Link>
-                )}
-
-                {loggedIn && (
-                    <Mutation
-                        mutation={USER_LOGOUT}
-                        refetchQueries={[{ query: USER_LOGGEDIN }]}
-                    >
-                        {userLogout => (
-                            <p
-                                className="logout"
-                                onClick={async () => {
-                                    // eslint-disable-next-line no-unused-vars
-                                    const res = await userLogout()
-                                    Router.push('/')
-                                }}
-                            >
-                                logout
-                            </p>
-                        )}
-                    </Mutation>
-                )}
-
-                {loggedIn && <p>hi {user.name}</p>}
+                    {loggedIn && <p>hi {user.name} 👋</p>}
+                </div>
             </Nav>
         )
     }

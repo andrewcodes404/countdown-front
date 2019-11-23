@@ -27,19 +27,23 @@ const now = new Date()
 const year = now.getFullYear()
 const month = ('0' + (now.getMonth() + 1)).slice(-2)
 // const day = '0' + now.getDate()
-const day = ('0' + now.getDate()).slice(-2)
-// const day = '1'
+
+// DAY: Sets the day for the Grid
 
 let theDate = null
-
+let day = null
+// THEDATE Sets the date to show timer or grid
 if (process.env.NODE_ENV === 'production') {
     theDate = '' + year + month + day
+
+    day = ('0' + now.getDate()).slice(-2)
 } else {
     theDate = '' + year + month + day
 
-    console.log('theDate = ', theDate)
-    // theDate = 20191130
+    // console.log('theDate = ', theDate)
+    // theDate = 20191201
     theDate = 20191201
+    day = '15'
 }
 
 class CDW extends React.Component {
@@ -49,6 +53,7 @@ class CDW extends React.Component {
     }
 
     componentDidMount() {
+        window.scrollTo(0, 0)
         const { id } = this.props.router.query
 
         this.props.client
@@ -106,6 +111,8 @@ class CDW extends React.Component {
     }
 
     render() {
+        console.log('theDate = ', theDate)
+
         return (
             <PageWrapper>
                 {/* THE TIMER --- THE TIMER --- THE TIMER */}
@@ -113,7 +120,7 @@ class CDW extends React.Component {
 
                 {/* THE MESSAGE --- THE MESSAGE --- THE MESSAGE ---  */}
 
-                {this.state.showMessage && (
+                {this.state.showMessage && theDate > 20191130 && (
                     <Message
                         onClick={() => {
                             this.handleCloseMessage()
@@ -124,7 +131,7 @@ class CDW extends React.Component {
                                 <Close className="message-close-btn-x" />
                             </div>
 
-                            <span>{this.state.name} says...</span>
+                            {/* <span>{this.state.name} says...</span> */}
                             <span>{this.state.message}</span>
                         </div>
                     </Message>
@@ -146,6 +153,8 @@ class CDW extends React.Component {
                         </div>
                     </Lightbox>
                 )}
+
+                {/* THE GRID --- THE GRID --- THE GRID ---- */}
 
                 <Grid>
                     <Cover>

@@ -2,6 +2,7 @@ import styled from 'styled-components'
 
 export const PageWrapper = styled.div`
     /* border: 1px solid yellow; */
+    background: green;
 `
 
 export const TimerStyled = styled.div`
@@ -43,12 +44,15 @@ export const Message = styled.div`
     justify-content: center;
     align-items: center;
     z-index: 3;
-    background: rgba(000, 000, 000, 0.5);
+    background: rgba(000, 000, 000, 0.8);
 
     .message-text {
         background: white;
+        /* background: lightgrey; */
+        /* background: rgba(255, 255, 255, 0.8); */
         padding: 30px 60px;
-        width: 90%;
+        /* width: 90%; */
+        text-align: center;
         max-width: 900px;
         span {
             font-size: 40px;

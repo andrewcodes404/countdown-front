@@ -42,15 +42,15 @@ class PageWrapper extends React.Component {
             )
         }
 
-        if (this.props.router.pathname === '/') {
-            return (
-                <>
-                    {React.Children.map(this.props.children, child =>
-                        React.cloneElement(child, {})
-                    )}
-                </>
-            )
-        }
+        // if (this.props.router.pathname === '/') {
+        //     return (
+        //         <>
+        //             {React.Children.map(this.props.children, child =>
+        //                 React.cloneElement(child, {})
+        //             )}
+        //         </>
+        //     )
+        // }
 
         return (
             <div>
@@ -73,20 +73,21 @@ class PageWrapper extends React.Component {
                                     loggedIn={loggedIn}
                                     user={userLoggedIn}
                                 />
-                                <Content>
-                                    <div className="page-wrapper">
-                                        {React.Children.map(
-                                            this.props.children,
-                                            child =>
-                                                React.cloneElement(child, {
-                                                    loggedIn,
-                                                    userLoggedIn,
-                                                })
-                                        )}
-                                    </div>
-                                </Content>
-                                <div className="push-down"></div>
-                                <Footer />
+
+                                {/* <Content> */}
+                                <div className="page-wrapper">
+                                    {React.Children.map(
+                                        this.props.children,
+                                        child =>
+                                            React.cloneElement(child, {
+                                                loggedIn,
+                                                userLoggedIn,
+                                            })
+                                    )}
+                                </div>
+                                {/* </Content> */}
+                                {/* <div className="push-down"></div> */}
+                                {/* <Footer /> */}
                             </PgWrapper>
                         )
                     }}
