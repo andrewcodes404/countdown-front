@@ -39,6 +39,7 @@ h2{
 }
 h3{
     font-size: 26px;
+    line-height: 1.4;
       
 }
 h4{
@@ -116,6 +117,7 @@ blockquote {
         to {
             opacity: 1;
         }
+        
     }
 
       @keyframes fade-out {

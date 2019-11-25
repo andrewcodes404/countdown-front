@@ -12,11 +12,18 @@ const Nav = styled.div`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    flex-direction: column;
     width: 90%;
     margin: 0 auto;
-    padding: 20px 0;
+    padding: 10px 0;
+    max-width: 1100px;
+    @media (min-width: 576px) {
+        padding: 20px 0;
+        flex-direction: row;
+    }
+
     h1 {
-        margin: 0;
+        margin: 0 0 10px 0;
     }
 
     .nav--logo {
@@ -27,7 +34,6 @@ const Nav = styled.div`
         align-items: center;
         /* width: 240px; */
         /* justify-content: space-between; */
-
         p,
         a {
             cursor: pointer;
@@ -35,6 +41,7 @@ const Nav = styled.div`
 
             &:hover {
                 color: ${props => props.theme.green};
+                cursor: pointer;
             }
         }
     }
@@ -56,7 +63,7 @@ class Index extends React.Component {
                 <div className="nav--logo">
                     <Link href="/">
                         <a>
-                            <h1>CDWow</h1>
+                            <h1>CountDownWow</h1>
                         </a>
                     </Link>
                 </div>

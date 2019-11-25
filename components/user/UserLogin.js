@@ -38,11 +38,11 @@ class UserLogin extends Component {
                     awaitRefetchQueries
                 >
                     {(userLogin, { error, loading }) => (
-                        <div>
+                        <div className="test">
                             <h2>Have an account?</h2>
                             <h2> Login here...</h2>
-                            {loading && <p>Loading...</p>}
-                            {error && (
+                            {/* {loading && <p>Loading...</p>} */}
+                            {/* {error && (
                                 <div>
                                     <p>
                                         Oh no those details are not correct...
@@ -54,7 +54,7 @@ class UserLogin extends Component {
                                         </Link>
                                     </p>
                                 </div>
-                            )}
+                            )} */}
                             <Form
                                 method="post"
                                 onSubmit={async e => {
@@ -66,9 +66,6 @@ class UserLogin extends Component {
                                     })
 
                                     await userLogin()
-                                    // could use 'onCompleted' in the muatation instead?
-                                    // https://www.apollographql.com/docs/react/essentials/mutations/
-
                                     Router.push('/build')
                                 }}
                             >
@@ -82,6 +79,7 @@ class UserLogin extends Component {
                                     value={this.state.email}
                                     onChange={this.handleChange}
                                     required
+                                    fullWidth={true}
                                 />
 
                                 <TextField
@@ -94,6 +92,7 @@ class UserLogin extends Component {
                                     value={this.state.password}
                                     onChange={this.handleChange}
                                     required
+                                    fullWidth={true}
                                 />
 
                                 <Button

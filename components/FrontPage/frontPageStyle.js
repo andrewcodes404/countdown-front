@@ -13,28 +13,19 @@ export const PageWrapper = styled.div`
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    margin-bottom: 200px;
+    margin-bottom: 100px;
 `
 
 export const Banner = styled.div`
     position: relative;
-  
-    min-height: 300px;
-    max-height: 400px;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 
-  
+    @media (min-width: 576px) {
+    }
 
-     @media (min-width: 576px) {
-           min-height: 400px;
-        max-height: 450px;
-        }
-
-      
     background-image: url('./static/graphics/xmas-doodle2-grey.svg');
     background-size: 300px 300px;
     background-position: center;
@@ -42,13 +33,18 @@ export const Banner = styled.div`
     .banner-video-cont {
         padding: 0 1rem;
         width: 100%;
+        margin: 50px auto;
 
-        max-width: 500px;
-        margin: auto;
-     
+        h1 {
+            font-size: 20px;
+        }
 
         @media (min-width: 576px) {
-            max-width: 600px;
+            max-width: 700px;
+        }
+
+        @media (min-width: 776px) {
+            max-width: 750px;
         }
 
         video {
@@ -59,7 +55,6 @@ export const Banner = styled.div`
 
     .banner-alert {
         width: 100%;
-        /* background-color: ${props => props.theme.red};; */
         background-color: ${props => props.theme.green};
         background-color: green;
         text-align: center;
@@ -79,7 +74,7 @@ export const Banner = styled.div`
             color: ${props => props.theme.green};
         }
     }
-    `
+`
 
 export const Headlines = styled.div`
     .headline-strip {
@@ -89,28 +84,46 @@ export const Headlines = styled.div`
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        height: 100px;
+
+        text-align: center;
+        padding: 20px 20px;
 
         h1 {
-            line-height: 1;
+            line-height: 1.2;
             margin: 0;
             color: white;
+            font-size: 24px;
+        }
+
+        @media (min-width: 576px) {
+            padding: 40px 20px;
+            h1 {
+                font-size: 40px;
+            }
         }
     }
 
     .strapline-strip {
         background-color: ${props => props.theme.green};
         text-align: center;
-        padding: 1rem 0;
+        padding: 20px;
 
         @media (min-width: 576px) {
-            padding: 1.5rem 0;
+            padding: 20px 20px;
         }
 
         h2 {
-            line-height: 1;
+            line-height: 1.2;
             margin: 0;
             color: white;
+            font-size: 22px;
+        }
+
+        @media (min-width: 576px) {
+            padding: 40px 20px;
+            h2 {
+                font-size: 35px;
+            }
         }
     }
 `
@@ -118,19 +131,11 @@ export const Headlines = styled.div`
 export const ThreeSteps = styled.div`
     .three-steps-wrapper {
         width: 90%;
-        max-width: 600px;
-        margin: auto;
-        padding: 1rem 0;
-
-        @media (min-width: 576px) {
-            margin: auto;
-            padding: 1rem 0;
-        }
+        max-width: 950px;
+        margin: 0 auto;
 
         @media (min-width: 768px) {
-            max-width: 900px;
-            margin: auto;
-            padding: 2rem 0;
+            margin: 80px auto;
         }
     }
 
@@ -138,36 +143,47 @@ export const ThreeSteps = styled.div`
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        margin: 0;
-        padding: 20px;
 
         @media (min-width: 576px) {
             justify-content: space-between;
         }
+
+        @media (min-width: 768px) {
+            flex-direction: row;
+        }
     }
 
     .three-steps-headline {
-        width: 100%;
         text-align: center;
-        margin: 30px 0px 60px;
 
-        font-size: 30px;
+        font-size: 20px;
         font-weight: bold;
+        padding: 20px;
+        margin-bottom: 30px;
+
+        @media (min-width: 576px) {
+            font-size: 35px;
+        }
     }
 
     .step-item {
         width: 100%;
-        max-width: 300px;
+
+        padding: 30px 5px;
 
         @media (min-width: 576px) {
             width: 30%;
+            /* max-width: 400px; */
+        }
+        @media (min-width: 768px) {
+            /* max-width: 400px; */
         }
 
         text-align: center;
-        border: 1px solid rgba(0, 0, 0, 0.1);
-        padding: 1rem 0.5rem 0.5rem;
-        margin-bottom: 1rem;
-        box-shadow: 2px 2px 13px 0px rgba(0, 0, 0, 0.05);
+        /* border: 1px solid rgba(0, 0, 0, 0.1); */
+        padding: 30px 10px;
+        margin-bottom: 40px;
+        box-shadow: 2px 2px 13px 0px rgba(0, 0, 0, 0.15);
 
         p {
             font-size: 24px;
@@ -197,22 +213,26 @@ export const ThreeSteps = styled.div`
 
 export const Login = styled.div`
     width: 90%;
-    max-width: 600px;
-    margin: auto;
-    padding: 1rem 0;
+    margin: 0 auto;
+    max-width: 850px;
 
-    @media (min-width: 576px) {
-        margin: auto;
-        padding: 1rem 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    /* text-align: center; */
+
+    @media (min-width: 768px) {
+        flex-direction: row;
+        align-items: flex-start;
+        margin: 0 auto;
+
+        justify-content: space-between;
     }
 
     @media (min-width: 768px) {
-        max-width: 900px;
-        margin: auto;
-        padding: 2rem 0;
+        /* max-width: 900px; */
+        /* margin: auto; */
+        /* padding: 2rem 0; */
     }
-
-    display: flex;
-    align-items: flex-start;
-    justify-content: space-between;
 `

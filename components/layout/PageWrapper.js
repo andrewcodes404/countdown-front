@@ -16,15 +16,9 @@ const PgWrapper = styled.div`
     flex-direction: column;
     min-height: 100vh;
 
-    .push-down {
+    /* .push-down {
         flex: 1;
-    }
-`
-
-const Content = styled.div`
-    width: 95%;
-    max-width: 1200px;
-    margin: 0 auto;
+    } */
 `
 
 class PageWrapper extends React.Component {
@@ -87,7 +81,7 @@ class PageWrapper extends React.Component {
                                 </div>
                                 {/* </Content> */}
                                 {/* <div className="push-down"></div> */}
-                                {/* <Footer /> */}
+                                <Footer />
                             </PgWrapper>
                         )
                     }}
