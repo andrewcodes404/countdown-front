@@ -3,6 +3,15 @@ import styled from 'styled-components'
 export const PageWrapper = styled.div`
     /* border: 1px solid yellow; */
     background: green;
+
+    .blur-me {
+        filter: grayscale(20%) blur(3px);
+    }
+
+    .un-blur-me {
+        transition: filter 0.6s;
+        filter: grayscale(0) blur(0px);
+    }
 `
 
 export const TimerStyled = styled.div`
@@ -34,17 +43,19 @@ export const TheClock = styled.div`
     }
 `
 export const Message = styled.div`
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    z-index: 3;
-    background: rgba(000, 000, 000, 0.8);
+    .message-wrapper {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        z-index: 3;
+        background: rgba(000, 000, 000, 0.8);
+    }
 
     .message-text {
         background: white;
@@ -74,6 +85,13 @@ export const Message = styled.div`
             transition: 0.4s;
             transform: rotate(90deg);
         }
+    }
+
+    .fade-out {
+        animation-name: fade-out;
+        animation-fill-mode: forwards;
+        animation-duration: 1s;
+        border: 3px solid green;
     }
 `
 
@@ -170,12 +188,15 @@ export const ImageExpand = styled.div`
 `
 
 export const Item = styled.div`
-    width: 16.6666vw;
-    height: 25vh;
-
+    width: 25vw;
+    height: 16.6666vh;
     position: relative;
-    /* border: 1px solid blue; */
     cursor: pointer;
+
+    @media (min-width: 768px) {
+        width: 16.6666vw;
+        height: 25vh;
+    }
 
     &:hover ${ImageExpand} {
         display: block;
@@ -190,28 +211,16 @@ export const Item = styled.div`
         left: 0;
         right: 0;
         z-index: 2;
-        /* display: none; */
+
         img {
             object-fit: cover;
             height: 100%;
         }
         transition: 0.4s;
-        /* &:hover {
-            filter: saturate(120%) brightness(1.2);
-        } */
     }
 
     .hide-item {
         display: none;
-    }
-
-    @keyframes fade-in {
-        from {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
     }
 
     .show-item {
@@ -240,6 +249,16 @@ export const Item = styled.div`
             color: white;
             &:hover {
                 color: green;
+                animation: shake-up-down 1s;
+            }
+        }
+    }
+
+    .bad-number {
+        h3 {
+            &:hover {
+                color: red;
+                animation: shake 1s;
             }
         }
     }

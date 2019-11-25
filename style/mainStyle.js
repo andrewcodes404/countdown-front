@@ -109,6 +109,71 @@ blockquote {
     line-height: 1.5;
 }
 
+  @keyframes fade-in {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+      @keyframes fade-out {
+        from {
+            opacity: 1;
+        }
+        to {
+            opacity: 0;
+        }
+    }
+
+    @keyframes shake-up-down {
+        10%,
+        90% {
+            transform: translate(0, -1px);
+        }
+
+        20%,
+        80% {
+            transform: translate(0, 2px);
+        }
+
+        30%,
+        50%,
+        70% {
+            transform: translate(0, -4px);
+        }
+
+        40%,
+        60% {
+            transform: translate(0, 4px);
+        }
+    }
+
+@keyframes shake {
+
+    10%,
+    90% {
+        transform: translate3d(-1px, 0, 0);
+    }
+
+    20%,
+    80% {
+        transform: translate3d(2px, 0, 0);
+    }
+
+    30%,
+    50%,
+    70% {
+        transform: translate3d(-4px, 0, 0);
+    }
+
+    40%,
+    60% {
+        transform: translate3d(4px, 0, 0);
+    }
+}
+
 `
 
 export default Style

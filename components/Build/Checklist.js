@@ -42,7 +42,7 @@ class Checklist extends React.Component {
         return (
             <ChecklistStyled>
                 <h2>
-                    Scroll back up to complete these steps and to launch your
+                    Scroll back up to complete these steps and then launch your
                     CountDownWow
                 </h2>
 

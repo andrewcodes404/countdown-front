@@ -29,10 +29,7 @@ class Preview extends React.Component {
         return (
             <PreviewStyle>
                 <h3>6. Launch</h3>
-                <h4>
-                    Ok are you ready to launch your CountdownWow? Check the
-                    example above.. all set? then click{' '}
-                </h4>
+                <h4>Ok are you ready to launch your CountdownWow? 👇</h4>
 
                 <div className="launch-btn-wrapper">
                     <Button
