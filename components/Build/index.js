@@ -71,7 +71,7 @@ class Build extends React.Component {
     }
 
     uploadWidget = (name, id) => {
-        const cloudFolder = `my_foldername/${name}_${id}`
+        const cloudFolder = `advent/${name}_${id}`
 
         window.cloudinary.openUploadWidget(
             {
@@ -86,8 +86,21 @@ class Build extends React.Component {
             },
             (err, result) => {
                 if (!err) {
-                    const url = result.info.secure_url
-                    const info = result.info
+                    console.log('result.info = ', result.info)
+                    let url
+                    // const info = result.info
+                    // console.log(
+                    //     'result.info.eager[0].secure_url = ',
+                    //     result.info.eager
+                    // )
+
+                    if (result.info.eager) {
+                        console.log(
+                            'result.info.eager[0].secure_url = 🍏',
+                            result.info.eager[0].secure_url
+                        )
+                        url = result.info.eager[0].secure_url
+                    }
 
                     if (url) {
                         this.setState(prevState => {
@@ -134,7 +147,6 @@ class Build extends React.Component {
                 {({ data, error, loading }) => {
                     if (loading) return <p>Loading...</p>
                     if (error) return <p>Error: {error.message}</p>
-               
 
                     const imgCount = data.libraryItems.length
 
@@ -155,8 +167,8 @@ class Build extends React.Component {
                                 You have uploaded {imgCount}/24 images
                             </h3>
                             <h3>2. Drag to order your images</h3>
-                            <p> 1 = 1st January</p>
-                            <p> 24 = Christmas Eve</p>
+                            <h4> 1 = 1st December</h4>
+                            <h4> 24 = Christmas Eve</h4>
                             <Sortable
                                 user={this.props.user}
                                 libraryItems={data.libraryItems}

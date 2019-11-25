@@ -75,6 +75,7 @@ class CDW extends React.Component {
                     showItem: '',
                     lightbox: '',
                     showMessage: true,
+                    removeBlur: false,
                 })
             })
     }
@@ -98,10 +99,16 @@ class CDW extends React.Component {
             lightbox: '',
         })
     }
+
     handleCloseMessage = () => {
         this.setState({
-            showMessage: false,
+            removeBlur: true,
         })
+        setTimeout(() => {
+            this.setState({
+                showMessage: false,
+            })
+        }, 1000)
     }
 
     render() {
@@ -118,50 +125,59 @@ class CDW extends React.Component {
                             this.handleCloseMessage()
                         }}
                     >
-                        <div className="message-text">
-                            <div className="message-close-btn">
-                                <Close className="message-close-btn-x" />
-                            </div>
+                        <div
+                            className={`message-wrapper  ${this.state
+                                .removeBlur && 'fade-out'}`}
+                        >
+                            <div className="message-text">
+                                <div className="message-close-btn">
+                                    <Close className="message-close-btn-x" />
+                                </div>
 
-                            {/* <span>{this.state.name} says...</span> */}
-                            <span>{this.state.message}</span>
+                                {/* <span>{this.state.name} says...</span> */}
+                                <span>{this.state.message}</span>
+                            </div>
                         </div>
                     </Message>
                 )}
 
-                {/* THE MODAL ---THE MODAL ---THE MODAL --- */}
-                {this.state.lightbox && (
-                    <Lightbox
-                        onClick={() => {
-                            this.handleCloseLightbox()
-                        }}
-                    >
-                        <div className="lightbox-close-btn">
-                            <Close className="lightbox-close-btn-x" />
-                        </div>
+                <div
+                    className={`blur-me  ${this.state.removeBlur &&
+                        'un-blur-me'}`}
+                >
+                    {/* THE MODAL ---THE MODAL ---THE MODAL --- */}
+                    {this.state.lightbox && (
+                        <Lightbox
+                            onClick={() => {
+                                this.handleCloseLightbox()
+                            }}
+                        >
+                            <div className="lightbox-close-btn">
+                                <Close className="lightbox-close-btn-x" />
+                            </div>
 
-                        <div className="lightbox-img">
-                            <img src={this.state.lightbox} alt="" />
-                        </div>
-                    </Lightbox>
-                )}
+                            <div className="lightbox-img">
+                                <img src={this.state.lightbox} alt="" />
+                            </div>
+                        </Lightbox>
+                    )}
 
-                {/* THE GRID --- THE GRID --- THE GRID ---- */}
+                    {/* THE GRID --- THE GRID --- THE GRID ---- */}
 
-                <Grid>
-                    <Cover>
-                        <img src={this.state.cover} alt="" />
-                    </Cover>
+                    <Grid>
+                        <Cover>
+                            <img src={this.state.cover} alt="" />
+                        </Cover>
 
-                    {theDate > 20191130 && (
-                        <>
-                            {this.state.library.map((el, index) => (
-                                <Item key={index}>
-                                    <div className="number">{}</div>
+                        {theDate > 20191130 && (
+                            <>
+                                {this.state.library.map((el, index) => (
+                                    <Item key={index}>
+                                        <div className="number">{}</div>
 
-                                    <div
-                                        className={`img-wrapper ${day - 1 <
-                                            el.index && 'hide-item'} 
+                                        <div
+                                            className={`img-wrapper ${day - 1 <
+                                                el.index && 'hide-item'} 
                                                  ${
                                                      this.state.showItem ===
                                                      el.index
@@ -169,40 +185,48 @@ class CDW extends React.Component {
                                                          : ''
                                                  }
                                                 `}
-                                    >
-                                        <img
-                                            src={el.secure_url}
+                                        >
+                                            <img
+                                                src={el.secure_url}
+                                                onClick={() => {
+                                                    this.handleShowLightbox(
+                                                        el.secure_url
+                                                    )
+                                                }}
+                                            />
+                                        </div>
+
+                                        {(day > el.index ||
+                                            this.state.showItem ===
+                                                el.index) && (
+                                            <ImageExpand
+                                                onClick={() => {
+                                                    this.handleShowLightbox(
+                                                        el.secure_url
+                                                    )
+                                                }}
+                                            >
+                                                <Fullscreen className="img-expand-icon" />
+                                            </ImageExpand>
+                                        )}
+
+                                        <div
+                                            className={`users-index ${day <
+                                                el.index && 'bad-number'} `}
                                             onClick={() => {
-                                                this.handleShowLightbox(
-                                                    el.secure_url
+                                                this.handleUserIndexClick(
+                                                    el.index
                                                 )
                                             }}
-                                        />
-                                    </div>
-
-                                    <ImageExpand
-                                        onClick={() => {
-                                            this.handleShowLightbox(
-                                                el.secure_url
-                                            )
-                                        }}
-                                    >
-                                        <Fullscreen className="img-expand-icon" />
-                                    </ImageExpand>
-
-                                    <div
-                                        className="users-index"
-                                        onClick={() => {
-                                            this.handleUserIndexClick(el.index)
-                                        }}
-                                    >
-                                        <h3>{el.index}</h3>
-                                    </div>
-                                </Item>
-                            ))}
-                        </>
-                    )}
-                </Grid>
+                                        >
+                                            <h3>{el.index}</h3>
+                                        </div>
+                                    </Item>
+                                ))}
+                            </>
+                        )}
+                    </Grid>
+                </div>
             </PageWrapper>
         )
     }
