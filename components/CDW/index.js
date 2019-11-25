@@ -32,19 +32,22 @@ const month = ('0' + (now.getMonth() + 1)).slice(-2)
 
 let theDate = null
 let day = null
+theDate = '' + year + month + day
+day = ('0' + now.getDate()).slice(-2)
+
 // THEDATE Sets the date to show timer or grid
-if (process.env.NODE_ENV === 'production') {
-    theDate = '' + year + month + day
+// if (process.env.NODE_ENV === 'production') {
+//     theDate = '' + year + month + day
 
-    day = ('0' + now.getDate()).slice(-2)
-} else {
-    theDate = '' + year + month + day
+//     day = ('0' + now.getDate()).slice(-2)
+// } else {
+//     theDate = '' + year + month + day
 
-    // console.log('theDate = ', theDate)
-    // theDate = 20191201
-    theDate = 20191201
-    day = '15'
-}
+//     // console.log('theDate = ', theDate)
+//     // theDate = 20191201
+//     theDate = 20191201
+//     day = '15'
+// }
 
 class CDW extends React.Component {
     constructor(props) {
