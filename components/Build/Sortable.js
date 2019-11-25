@@ -103,20 +103,38 @@ class Sortable extends React.Component {
         this.state.items.splice(Index, 1)
 
         // The remove from the DB
-        this.props.client.mutate({
-            mutation: DELETE_LIBRARY_ITEM,
-            variables: {
-                id: imageId,
-            },
-            refetchQueries: () => [
-                {
-                    query: GET_LIBRARY_ITEMS_WHERE_ID,
-                    variables: {
-                        id: this.props.user.id,
-                    },
+        this.props.client
+            .mutate({
+                mutation: DELETE_LIBRARY_ITEM,
+                variables: {
+                    id: imageId,
                 },
-            ],
-        })
+                refetchQueries: () => [
+                    {
+                        query: GET_LIBRARY_ITEMS_WHERE_ID,
+                        variables: {
+                            id: this.props.user.id,
+                        },
+                    },
+                ],
+            })
+            .then(() => {
+                console.log('CB fn after setState client.mutation()')
+
+                // match the library item index with state
+                const items = this.state.items
+
+                for (var i = 0; i < items.length; i++) {
+                    items[i].index = i + 1
+                    // update the library items index in GraphQL
+                    const itemObject = { ...items[i] }
+
+                    this.props.client.mutate({
+                        mutation: UPDATE_LIBRARY_ITEM,
+                        variables: itemObject,
+                    })
+                }
+            })
 
         this.setState({
             showModal: false,
@@ -138,8 +156,8 @@ class Sortable extends React.Component {
                         className="sortable-list"
                         items={this.state.items}
                         onSortEnd={this.onSortEnd}
-                        onSortStart={this.onSortStart}
-                        onSortMove={this.onSortMove}
+                        // onSortStart={this.onSortStart}
+                        // onSortMove={this.onSortMove}
                         axis="xy"
                         distance={1}
                         id={id}

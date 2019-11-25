@@ -41,7 +41,7 @@ class Home extends React.Component {
                         </p>
                     </div> */}
 
-                    <div className=" banner-video-cont">
+                    <div className="banner-video-cont">
                         <video
                             src={calVid}
                             controls
@@ -70,10 +70,10 @@ class Home extends React.Component {
 
                 <ThreeSteps>
                     <div className="three-steps-wrapper">
+                        <h2 className="three-steps-headline">
+                            Your countdown calendar in three easy steps:
+                        </h2>
                         <div className="three-steps">
-                            <h2 className="three-steps-headline">
-                                Your countdown calendar in three easy steps:
-                            </h2>
                             <div className="step-item">
                                 <div className="step-number">
                                     <h3>1</h3>

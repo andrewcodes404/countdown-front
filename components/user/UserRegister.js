@@ -66,7 +66,7 @@ class UserRegister extends Component {
                     // refetchQueries={[{ query: USER_LOGGEDIN }]}
                 >
                     {(userRegister, { error, loading }) => (
-                        <div>
+                        <div className="user-regester-form">
                             <h2>Register here...</h2>
                             {loading && <p>Loading...</p>}
                             {error && (
@@ -117,6 +117,7 @@ class UserRegister extends Component {
                                     value={this.state.name}
                                     onChange={this.handleChange}
                                     required
+                                    fullWidth={true}
                                 />
                                 <TextField
                                     type="text"
@@ -128,6 +129,7 @@ class UserRegister extends Component {
                                     value={this.state.email}
                                     onChange={this.handleChange}
                                     required
+                                    fullWidth={true}
                                 />
                                 <TextField
                                     type="password"
@@ -139,11 +141,9 @@ class UserRegister extends Component {
                                     value={this.state.password}
                                     onChange={this.handleChange}
                                     required
+                                    fullWidth={true}
                                 />
-                                <p>
-                                    {this.state.passwordAlert &&
-                                        'pws dont match'}
-                                </p>
+
                                 <TextField
                                     type="password"
                                     id="confirmPassword"
@@ -154,18 +154,27 @@ class UserRegister extends Component {
                                     value={this.state.confirmPassword}
                                     onChange={this.handleConfirmPasswordChange}
                                     required
+                                    fullWidth={true}
                                     disabled={
                                         this.state.password ? false : true
                                     }
                                 />
+
+                                <p>
+                                    {this.state.passwordAlert &&
+                                        'pws dont match'}
+                                </p>
                                 <ReCAPTCHA
                                     sitekey={
                                         '6LcyO8QUAAAAAJiL0JR9Id8eewEvPFHAzdfCNOoH'
                                     }
                                     onChange={this.onChange}
+                                    className="recaptcha"
+                                    // size="compact"
                                 />
 
                                 <Button
+                                    fullWidth={true}
                                     margin="normal"
                                     type="submit"
                                     variant="outlined"

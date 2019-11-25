@@ -39,35 +39,33 @@ export const FormWrapper = styled.div`
     justify-content: center;
     align-items: center;
     flex: 1;
-    /* margin-top: 100px; */
+
+    .user-regester-form {
+        margin-bottom: 30px;
+    }
 `
 
 export const Form = styled.form`
-    width: 80%;
+    /* width: 80%; */
     margin: 0 auto;
-    width: 300px;
-
     display: flex;
     flex-direction: column;
+    flex: 1;
+    .textField,
     .submit-btn {
+        flex: 1;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 300px;
-        padding: 2px;
+        width: 100%;
+        /* padding: 2px; */
         margin-top: 30px;
         margin-bottom: 15px;
         cursor: pointer;
         transition: 0.4s;
         span {
             font-size: 24px;
-        }
-
-        &:hover {
-            background: green;
-            color: white;
-            /* border: unset; */
         }
     }
 `
@@ -78,7 +76,6 @@ export const SuccessMessage = styled.div`
     h2 {
         margin: 5px;
         line-height: 1;
-        
     }
 
     p {

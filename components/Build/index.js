@@ -28,12 +28,23 @@ import styled from 'styled-components'
 const PageWrapper = styled.div`
     width: 90%;
     margin: 0 auto;
+
+    .upload-btn--wrapper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
     .upload-btn {
+        background-color: ${props => props.theme.green};
+        color: white;
+        margin: 30px auto 20px;
+        font-size: 24px;
+
         &:hover {
-            background-color: ${props => props.theme.green};
-            color: white;
+            background-color: gold;
+            color: black;
         }
-        margin: 0 10px;
     }
 `
 
@@ -62,16 +73,23 @@ class Build extends React.Component {
         this.setState({
             currentIndexTotal,
         })
+
+        console.log('this.state.imgLeft = ', this.state.imgLeft)
     }
 
-    componentDidUpdate(prevProps) {
-        // Typical usage (don't forget to compare props):
-        if (this.props.user.library !== prevProps.library) {
-        }
-    }
+    // componentDidUpdate(prevProps) {
+    //     // Typical usage (don't forget to compare props):
+    //     if (this.props.user.library !== prevProps.library) {
+    //     }
+    // }
 
     uploadWidget = (name, id) => {
         const cloudFolder = `advent/${name}_${id}`
+
+        const imgLeft = this.state.imgLeft
+
+        console.log('imgLeft 🌴 = ', imgLeft)
+        console.log('typeof imgLeft = ', typeof imgLeft)
 
         window.cloudinary.openUploadWidget(
             {
@@ -79,10 +97,46 @@ class Build extends React.Component {
                 uploadPreset: 'countdownwow_unsigned',
                 maxImageWidth: 2400,
                 maxImageHeight: 2400,
-                // maxFiles: imgLeft,
+                maxFiles: imgLeft,
                 tags: [name, id, 'countdownWow'],
                 folder: cloudFolder,
-                showCompletedButton: true,
+                // showCompletedButton: true,
+                text: {
+                    en: {
+                        queue: {
+                            // "title": "Upload Queue",
+                            title: 'Upload Finished',
+                            title_uploading_with_counter:
+                                'Uploading {{num}} Assets',
+                            title_uploading: 'Uploading Assets',
+                            mini_title: 'Uploaded',
+                            mini_title_uploading: 'Uploading',
+                            show_completed: 'Show completed',
+                            retry_failed: 'Retry failed',
+                            abort_all: 'Abort all',
+                            upload_more: 'Upload More',
+                            more: 'More',
+                            mini_upload_count: '{{num}} Uploaded',
+                            mini_failed: '{{num}} Failed',
+                            statuses: {
+                                uploading: 'Uploading...',
+                                error: 'Error',
+                                uploaded: 'Done',
+                                aborted: 'Aborted',
+                            },
+                        },
+                        notifications: {
+                            general_error: 'An error has occurred',
+                            general_prompt: 'Are you sure?',
+                            // "limit_reached": "No more files can be selected",
+                            limit_reached: `You have a maximum of ${imgLeft} images left`,
+                            invalid_add_url: 'Added URL must be valid',
+                            invalid_public_id:
+                                'Public ID cannot contain \\,?,&,#,%,<,>',
+                            no_new_files: 'File(s) have already been uploaded',
+                        },
+                    },
+                },
             },
             (err, result) => {
                 if (!err) {
@@ -152,9 +206,12 @@ class Build extends React.Component {
 
                     return (
                         <PageWrapper>
-                            <h1>Build CoutndownWow</h1>
                             <h3>
-                                1. Upload your images{' '}
+                                1. Upload your images (you have uploaded{' '}
+                                {imgCount}/24 images)
+                            </h3>
+                            <h4>imgLeft {this.state.imgLeft}</h4>
+                            <div className="upload-btn--wrapper">
                                 <Button
                                     variant="contained"
                                     onClick={() => {
@@ -164,11 +221,11 @@ class Build extends React.Component {
                                 >
                                     upload
                                 </Button>
-                                You have uploaded {imgCount}/24 images
-                            </h3>
+                            </div>
+
                             <h3>2. Drag to order your images</h3>
-                            <h4> 1 = 1st December</h4>
-                            <h4> 24 = Christmas Eve</h4>
+                            <h4> 1 = 1st December, 24 = Christmas Eve</h4>
+
                             <Sortable
                                 user={this.props.user}
                                 libraryItems={data.libraryItems}

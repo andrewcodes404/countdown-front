@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 export const PageWrapper = styled.div`
     /* border: 1px solid yellow; */
-    background: green;
+    background: black;
 
     .blur-me {
         filter: grayscale(20%) blur(3px);
@@ -61,29 +61,45 @@ export const Message = styled.div`
         background: white;
         /* background: lightgrey; */
         /* background: rgba(255, 255, 255, 0.8); */
-        padding: 30px 60px;
+        padding: 15px 50px 15px 30px;
         /* width: 90%; */
         text-align: center;
         max-width: 900px;
         span {
-            font-size: 40px;
+            font-size: 20px;
         }
         position: relative;
+
+        @media (min-width: 768px) {
+            padding: 30px 60px;
+            span {
+                font-size: 40px;
+            }
+        }
     }
 
     .message-close-btn {
         position: absolute;
-        top: 20px;
-        right: 20px;
+        top: 10px;
+        right: 10px;
+
+        @media (min-width: 768px) {
+            top: 20px;
+            right: 20px;
+        }
     }
 
     .message-close-btn-x {
-        font-size: 40px;
+        font-size: 20px;
         cursor: pointer;
         &:hover {
             color: red;
             transition: 0.4s;
             transform: rotate(90deg);
+        }
+
+        @media (min-width: 768px) {
+            font-size: 40px;
         }
     }
 
@@ -124,14 +140,23 @@ export const Lightbox = styled.div`
 
     .lightbox-close-btn {
         position: absolute;
-        top: 50px;
-        right: 50px;
+        top: 20px;
+        right: 20px;
         color: white;
-        font-size: 80px;
+
+        @media (min-width: 768px) {
+            top: 50px;
+            right: 50px;
+        }
 
         .lightbox-close-btn-x {
-            font-size: 60px;
+            font-size: 40px;
             cursor: pointer;
+
+            @media (min-width: 768px) {
+                font-size: 60px;
+            }
+
             &:hover {
                 color: red;
                 transition: 0.4s;
@@ -193,15 +218,18 @@ export const Item = styled.div`
     position: relative;
     cursor: pointer;
 
-    @media (min-width: 768px) {
+    @media (min-width: 500px) {
         width: 16.6666vw;
         height: 25vh;
     }
 
     &:hover ${ImageExpand} {
-        display: block;
         animation-name: fade-in;
         animation-duration: 2.5s;
+
+        @media (min-width: 576px) {
+            display: block;
+        }
     }
 
     .img-wrapper {
@@ -245,8 +273,13 @@ export const Item = styled.div`
         cursor: pointer;
         h3 {
             margin: 0;
-            font-size: 40px;
+            font-size: 20px;
             color: white;
+
+            @media (min-width: 576px) {
+                font-size: 40px;
+            }
+
             &:hover {
                 color: green;
                 animation: shake-up-down 1s;
