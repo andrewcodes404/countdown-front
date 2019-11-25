@@ -2,5 +2,8 @@
     "version": 2,
     "name": "countdown-front",
     "builds": [{ "src": "next.config.js", "use": "@now/next" }],
-    "routes": [{ "src": "/countdown/(?<id>[^/]+)$", "dest": "/countdown?id=$id" }]
+    "routes": [{ "src": "/countdown/(?<id>[^/]+)$", "dest": "/countdown?id=$id" }],
+    "env": {
+        "NODE_ENV":"@node_enviroment"
+    }
 }
