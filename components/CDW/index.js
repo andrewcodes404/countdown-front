@@ -26,14 +26,14 @@ import Timer from './Timer'
 const now = new Date()
 const year = now.getFullYear()
 const month = ('0' + (now.getMonth() + 1)).slice(-2)
+const day = ('0' + now.getDate()).slice(-2)
 // const day = '0' + now.getDate()
 
 // DAY: Sets the day for the Grid
 
-let theDate = null
-let day = null
-theDate = '' + year + month + day
-day = ('0' + now.getDate()).slice(-2)
+// let theDate = null
+// let day = null
+const theDate = '' + year + month + day
 
 // THEDATE Sets the date to show timer or grid
 // if (process.env.NODE_ENV === 'production') {
