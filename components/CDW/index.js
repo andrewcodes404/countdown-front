@@ -26,28 +26,11 @@ import Timer from './Timer'
 const now = new Date()
 const year = now.getFullYear()
 const month = ('0' + (now.getMonth() + 1)).slice(-2)
-const day = ('0' + now.getDate()).slice(-2)
-// const day = '0' + now.getDate()
+// const day = ('0' + now.getDate()).slice(-2)
+const day = '15'
 
-// DAY: Sets the day for the Grid
-
-// let theDate = null
-// let day = null
-const theDate = '' + year + month + day
-
-// THEDATE Sets the date to show timer or grid
-// if (process.env.NODE_ENV === 'production') {
-//     theDate = '' + year + month + day
-
-//     day = ('0' + now.getDate()).slice(-2)
-// } else {
-//     theDate = '' + year + month + day
-
-//     // console.log('theDate = ', theDate)
-//     // theDate = 20191201
-//     theDate = 20191201
-//     day = '15'
-// }
+// const theDate = '' + year + month + day
+const theDate = 20191201
 
 class CDW extends React.Component {
     constructor(props) {
