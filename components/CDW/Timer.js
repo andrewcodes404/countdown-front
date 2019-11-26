@@ -33,9 +33,7 @@ class Timer extends React.Component {
                 {this.props.theDate < 20191201 ? (
                     <TimerStyled>
                         <div className="message">
-                            <h1>
-                                {this.props.name}'s calendar is reaady in...
-                            </h1>
+                            <h1>{this.props.name}'s calendar starts in...</h1>
                             <Countdown
                                 date={timerTarget}
                                 renderer={timerRender}

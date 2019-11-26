@@ -26,11 +26,11 @@ import Timer from './Timer'
 const now = new Date()
 const year = now.getFullYear()
 const month = ('0' + (now.getMonth() + 1)).slice(-2)
-// const day = ('0' + now.getDate()).slice(-2)
-const day = '15'
+const day = ('0' + now.getDate()).slice(-2)
+// const day = '15'
 
-// const theDate = '' + year + month + day
-const theDate = 20191201
+const theDate = '' + year + month + day
+// const theDate = 20191201
 
 class CDW extends React.Component {
     constructor(props) {
@@ -49,6 +49,8 @@ class CDW extends React.Component {
             })
             .then(result => {
                 const user = result.data.users[0]
+
+                console.log('result.data = ', result.data)
 
                 const randomizedLibrary = user.library.sort(function() {
                     return 0.5 - Math.random()
@@ -74,9 +76,12 @@ class CDW extends React.Component {
         }
     }
 
-    handleShowLightbox = url => {
+    handleShowLightbox = (url, url200, url600, url2400) => {
         this.setState({
             lightbox: url,
+            lightbox200: url200,
+            lightbox600: url600,
+            lightbox2400: url2400,
         })
     }
 
@@ -143,7 +148,11 @@ class CDW extends React.Component {
                             </div>
 
                             <div className="lightbox-img">
-                                <img src={this.state.lightbox} alt="" />
+                                <img
+                                    src={this.state.lightbox}
+                                    srcSet={`${this.state.lightbox200} 200w, ${this.state.lightbox600} 600w, ${this.state.lightbox2400} 2000w`}
+                                    sizes="80vw"
+                                />
                             </div>
                         </Lightbox>
                     )}
@@ -159,7 +168,7 @@ class CDW extends React.Component {
                             <>
                                 {this.state.library.map((el, index) => (
                                     <Item key={index}>
-                                        <div className="number">{}</div>
+                                        {/* <div className="number">{}</div> */}
 
                                         <div
                                             className={`img-wrapper ${day - 1 <
@@ -174,9 +183,14 @@ class CDW extends React.Component {
                                         >
                                             <img
                                                 src={el.secure_url}
+                                                srcSet={`${el.url200} 200w, ${el.url600} 600w, ${el.url2400} 2000w`}
+                                                sizes="min-width(576px) 25vw 16.666vw"
                                                 onClick={() => {
                                                     this.handleShowLightbox(
-                                                        el.secure_url
+                                                        el.secure_url,
+                                                        el.url200,
+                                                        el.url600,
+                                                        el.url2400
                                                     )
                                                 }}
                                             />
@@ -188,7 +202,10 @@ class CDW extends React.Component {
                                             <ImageExpand
                                                 onClick={() => {
                                                     this.handleShowLightbox(
-                                                        el.secure_url
+                                                        el.secure_url,
+                                                        el.url200,
+                                                        el.url600,
+                                                        el.url2400
                                                     )
                                                 }}
                                             >

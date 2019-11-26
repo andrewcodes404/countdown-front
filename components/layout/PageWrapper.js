@@ -3,22 +3,21 @@ import PropTypes from 'prop-types'
 import { Query } from 'react-apollo'
 import { USER_LOGGEDIN } from '../../lib/graphqlTags'
 import { withRouter } from 'next/router'
-// import Spinner from './lib/Spinner'
+
 // comps
 import Meta from './Meta'
 import Navigation from './nav'
 import Footer from './Footer'
 
 import styled from 'styled-components'
-
 const PgWrapper = styled.div`
     display: flex;
     flex-direction: column;
     min-height: 100vh;
 
-    /* .push-down {
+    .push-down {
         flex: 1;
-    } */
+    }
 `
 
 class PageWrapper extends React.Component {
@@ -36,16 +35,6 @@ class PageWrapper extends React.Component {
             )
         }
 
-        // if (this.props.router.pathname === '/') {
-        //     return (
-        //         <>
-        //             {React.Children.map(this.props.children, child =>
-        //                 React.cloneElement(child, {})
-        //             )}
-        //         </>
-        //     )
-        // }
-
         return (
             <div>
                 <Query query={USER_LOGGEDIN}>
@@ -58,7 +47,6 @@ class PageWrapper extends React.Component {
                         //don't use data.user as a bool ☠️
                         var loggedIn = false
                         userLoggedIn ? (loggedIn = true) : (loggedIn = false)
-                        // console.log('loggedIn ...from PageWrapper = ', loggedIn)
 
                         return (
                             <PgWrapper>
@@ -68,7 +56,6 @@ class PageWrapper extends React.Component {
                                     user={userLoggedIn}
                                 />
 
-                                {/* <Content> */}
                                 <div className="page-wrapper">
                                     {React.Children.map(
                                         this.props.children,
@@ -79,8 +66,8 @@ class PageWrapper extends React.Component {
                                             })
                                     )}
                                 </div>
-                                {/* </Content> */}
-                                {/* <div className="push-down"></div> */}
+
+                                <div className="push-down"></div>
                                 <Footer />
                             </PgWrapper>
                         )
