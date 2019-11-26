@@ -1,15 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { graphql } from 'react-apollo'
 import { withApollo, Query } from 'react-apollo'
-import gql from 'graphql-tag'
-import dynamic from 'next/dynamic'
 
 // import UploadWidget from './UploadWidget'
 import Sortable from './Sortable'
 import CoverPicker from './CoverPicker'
 import Message from './Message'
-import Example from './Example'
 
 import Preview from './Preview'
 import Checklist from './Checklist'
@@ -30,9 +26,13 @@ const PageWrapper = styled.div`
     margin: 0 auto;
 
     .upload-btn--wrapper {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        /* display: flex; */
+        /* justify-content: center; */
+        /* align-items: center; */
+        text-align: center;
+        @media (min-width: 576px) {
+            text-align: unset;
+        }
     }
 
     .upload-btn {
@@ -56,9 +56,7 @@ class Build extends React.Component {
             currentIndexTotal: 0,
             galleryLength: 0,
             imgsUploaded: this.props.user.library.length,
-
             checklistComplete: false,
-
             imgLeft: 24 - this.props.user.library.length,
             imgCountComplete: '',
             imgCount: '',
@@ -73,23 +71,28 @@ class Build extends React.Component {
         this.setState({
             currentIndexTotal,
         })
-
-        console.log('this.state.imgLeft = ', this.state.imgLeft)
     }
 
     // componentDidUpdate(prevProps) {
     //     // Typical usage (don't forget to compare props):
-    //     if (this.props.user.library !== prevProps.library) {
+    //     if (this.props.libraryItems !== prevProps.libraryItems) {
+    //         this.setState(
+    //             {
+    //                 library: this.props.libraryItems,
+    //             },
+    //             () => {
+    //                 console.log('this.state 🍏 = ', this.state)
+    //             }
+    //         )
     //     }
     // }
 
-    uploadWidget = (name, id) => {
+    uploadWidget = (name, id, imgCount) => {
         const cloudFolder = `advent/${name}_${id}`
 
-        const imgLeft = this.state.imgLeft
-
-        console.log('imgLeft 🌴 = ', imgLeft)
-        console.log('typeof imgLeft = ', typeof imgLeft)
+        const imgLeft = 24 - imgCount
+        // console.log('imgLeft = ', imgLeft)
+        // console.log('typeof imgLeft = ', typeof imgLeft)
 
         window.cloudinary.openUploadWidget(
             {
@@ -140,23 +143,14 @@ class Build extends React.Component {
             },
             (err, result) => {
                 if (!err) {
-                    console.log('result.info = ', result.info)
-                    let url
-                    // const info = result.info
-                    // console.log(
-                    //     'result.info.eager[0].secure_url = ',
-                    //     result.info.eager
-                    // )
+                    // if (result.info.eager) {
+                    //     console.log('result.info = ', result.info)
 
-                    if (result.info.eager) {
-                        console.log(
-                            'result.info.eager[0].secure_url = 🍏',
-                            result.info.eager[0].secure_url
-                        )
-                        url = result.info.eager[0].secure_url
-                    }
+                    // }
 
-                    if (url) {
+                    console.log('result = ', result)
+
+                    if (result.event == 'success') {
                         this.setState(prevState => {
                             return {
                                 currentIndexTotal:
@@ -165,13 +159,20 @@ class Build extends React.Component {
                         })
 
                         const index = this.state.currentIndexTotal
+                        const url600 = result.info.eager[0].secure_url
+                        const url2400 = result.info.eager[1].secure_url
+                        const url200 = result.info.eager[2].secure_url
+                        const urlOrig = result.info.secure_url
 
                         // REFETCH HELL SORTED HERE https://github.com/apollographql/apollo-client/issues/1900   @MitchEff's post
 
                         this.props.client.mutate({
                             mutation: CREATE_LIBRARY_ITEM,
                             variables: {
-                                secure_url: url,
+                                secure_url: urlOrig,
+                                url200: url200,
+                                url600: url600,
+                                url2400: url2400,
                                 index: index,
                             },
                             refetchQueries: () => [
@@ -207,17 +208,18 @@ class Build extends React.Component {
                     return (
                         <PageWrapper>
                             <h3>
-                                1. Upload your images (you have uploaded{' '}
-                                {imgCount}/24 images)
+                                1. Upload your images ( you have uploaded{' '}
+                                {imgCount}/24 images )
                             </h3>
-                            <h4>imgLeft {this.state.imgLeft}</h4>
+
                             <div className="upload-btn--wrapper">
                                 <Button
                                     variant="contained"
                                     onClick={() => {
-                                        this.uploadWidget(name, id)
+                                        this.uploadWidget(name, id, imgCount)
                                     }}
                                     className="upload-btn"
+                                    disabled={imgCount >= 24}
                                 >
                                     upload
                                 </Button>
@@ -263,6 +265,7 @@ class Build extends React.Component {
 
 Build.propTypes = {
     user: PropTypes.object,
+    client: PropTypes.object,
 }
 
 export default withApollo(Build)

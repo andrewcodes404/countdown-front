@@ -41,12 +41,15 @@ const SortableList = SortableContainer(({ items, id, deleteLibraryItem }) => {
 })
 
 class Sortable extends React.Component {
-    state = {
-        items: [],
-    }
+    constructor(props) {
+        super(props)
 
+        this.state = {
+            items: [],
+        }
+    }
     componentDidMount() {
-        console.log('componentDidMount()')
+        // console.log('componentDidMount()')
         const library = this.props.libraryItems
         library.sort((a, b) => (a.index > b.index ? 1 : -1))
         this.setState({
@@ -74,8 +77,6 @@ class Sortable extends React.Component {
             }),
 
             () => {
-                console.log('CB fn after setState client.mutation()')
-
                 // match the library item index with state
                 const items = this.state.items
 
@@ -94,10 +95,6 @@ class Sortable extends React.Component {
     }
 
     deleteLibraryItem = imageId => {
-        // this.setState({
-        //     items: library,
-        // })
-
         // Remove the image from the array first for instant result on the frontend
         const Index = this.state.items.findIndex(x => x.id === imageId)
         this.state.items.splice(Index, 1)
@@ -109,18 +106,8 @@ class Sortable extends React.Component {
                 variables: {
                     id: imageId,
                 },
-                refetchQueries: () => [
-                    {
-                        query: GET_LIBRARY_ITEMS_WHERE_ID,
-                        variables: {
-                            id: this.props.user.id,
-                        },
-                    },
-                ],
             })
             .then(() => {
-                console.log('CB fn after setState client.mutation()')
-
                 // match the library item index with state
                 const items = this.state.items
 
@@ -132,6 +119,14 @@ class Sortable extends React.Component {
                     this.props.client.mutate({
                         mutation: UPDATE_LIBRARY_ITEM,
                         variables: itemObject,
+                        refetchQueries: () => [
+                            {
+                                query: GET_LIBRARY_ITEMS_WHERE_ID,
+                                variables: {
+                                    id: this.props.user.id,
+                                },
+                            },
+                        ],
                     })
                 }
             })
@@ -148,7 +143,7 @@ class Sortable extends React.Component {
     render() {
         // console.log('this .state = ', this.state)
         const { id } = this.props.user
-        console.log('this.props = ', this.props)
+
         return (
             <>
                 <div>

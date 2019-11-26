@@ -1,12 +1,6 @@
 import React from 'react'
-// import { Link } from 'react-router-dom'
 
 //comps
-// import Login from './authorise/Login'
-// import Register from './authorise/Register'
-// import Navigation from './Navigation'
-// import Footer from './Footer'
-
 import UserRegister from '../user/UserRegister'
 import UserLogin from '../user/UserLogin'
 

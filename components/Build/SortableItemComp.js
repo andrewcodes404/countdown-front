@@ -17,9 +17,7 @@ import styled from 'styled-components'
 
 const StyledItem = styled.div`
     cursor: pointer;
-    /* min-width: 200px; */
     width: 25%;
-    /* height: 200px; */
 
     @media (min-width: 576px) {
         width: 16.666%;
@@ -83,15 +81,15 @@ const Deletecan = styled.div`
     bottom: 0;
     right: 0;
     background: ${props => props.theme.green};
-    height: 40px;
-    width: 40px;
+    height: 22px;
+    width: 22px;
     border-top-left-radius: 10px;
     display: flex;
     justify-content: center;
     align-items: center;
 
     /* display: none; */
-    opacity: 0;
+    opacity: 1;
     transition: ${props => props.theme.transTime};
     ${StyledItem}:hover & {
         opacity: 1;
@@ -100,41 +98,61 @@ const Deletecan = styled.div`
     &:hover {
         color: orangered;
     }
+
     .icon {
-        font-size: 25px;
+        font-size: 15px;
+    }
+
+    @media (min-width: 576px) {
+        opacity: 0;
+        height: 40px;
+        width: 40px;
+        .icon {
+            font-size: 25px;
+        }
     }
 `
 
 const Modal = styled.div`
-    background: rgba(252, 186, 3, 0.75);
-    position: absolute;
+    background: rgba(255, 215, 0, 0.5);
+    position: fixed;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
-    z-index: 1;
+    z-index: 2;
 
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
-    /* align-items: flex-start; */
+    justify-content: center;
+    align-items: center;
 
     .content {
         width: 90%;
+        max-width: 300px;
         margin: 0 auto;
         text-align: center;
+        background: white;
+        padding-bottom: 40px;
+    }
+
+    .modal-img {
+        width: 90%;
+        max-width: 160px;
+        margin: 20px auto 0;
     }
 
     .buttons {
         width: 70%;
-        margin: 10px auto 0;
+        max-width: 160px;
+        margin: 20px auto 0;
         display: flex;
         justify-content: space-between;
     }
 
     .button {
         all: unset;
-
+        cursor: pointer;
         border: 1px solid #000;
         padding: 5px 15px;
         border-radius: 5px;
@@ -159,9 +177,11 @@ class SortableItemComp extends React.Component {
     }
 
     handleHoverOff = () => {
-        this.setState({
-            showModal: false,
-        })
+        console.log('hovver off')
+
+        // this.setState({
+        //     showModal: false,
+        // })
     }
 
     handleTrash = () => {
@@ -176,49 +196,38 @@ class SortableItemComp extends React.Component {
         })
     }
 
-    // deleteLibraryItem = () => {
-    //     this.props.client.mutate({
-    //         mutation: DELETE_LIBRARY_ITEM,
-    //         variables: {
-    //             id: this.props.image.id,
-    //         },
-    //         refetchQueries: () => [
-    //             {
-    //                 query: GET_LIBRARY_ITEMS_WHERE_ID,
-    //                 variables: {
-    //                     id: this.props.id,
-    //                 },
-    //             },
-    //         ],
-    //     })
-
-    //     this.setState({
-    //         showModal: false,
-    //     })
-    // }
-
     render() {
         const {
             myIndex,
-            image: { id, secure_url },
+            image: { id, secure_url, url200, url600, url2400 },
         } = this.props
 
-        // console.log('image.id = ', image.id)
         return (
-            <StyledItem onMouseLeave={this.handleHoverOff}>
+            <>
                 {this.state.showModal && (
                     <Modal>
                         <div className="content">
                             <h5>Delete this image?</h5>
+
+                            <div className="modal-img">
+                                {/* <img src={secure_url} alt="" /> */}
+                                <img
+                                    src={secure_url}
+                                    srcSet={`${url200} 200w, ${url600} 600w, ${url2400} 2000`}
+                                    sizes="25vw"
+                                />
+                            </div>
 
                             <div className="buttons">
                                 {/* <DeleteImage id={image.id} /> */}
 
                                 <button
                                     className="button button--yes"
-                                    // onClick={this.handleYesDelete}
                                     onClick={() => {
                                         this.props.deleteLibraryItem(id)
+                                        this.setState({
+                                            showModal: false,
+                                        })
                                     }}
                                 >
                                     Yes
@@ -235,18 +244,23 @@ class SortableItemComp extends React.Component {
                     </Modal>
                 )}
 
-                <div className="number">
-                    <span>{myIndex + 1}</span>
-                </div>
-                <Deletecan>
-                    <Delete className="icon" onClick={this.handleTrash} />
-                </Deletecan>
-                <div className="img-wrapper ">
-                    <img src={secure_url} alt="" srcSet="" />
-                </div>
+                <StyledItem onMouseLeave={this.handleHoverOff}>
+                    <div className="number">
+                        <span>{myIndex + 1}</span>
+                    </div>
+                    <Deletecan>
+                        <Delete className="icon" onClick={this.handleTrash} />
+                    </Deletecan>
+                    <div className="img-wrapper ">
+                        <img
+                            src={secure_url}
+                            srcSet={`${url200} 200w, ${url600} 600w, ${url2400} 2000`}
+                        />
+                    </div>
 
-                <div className="dummy-div-for-height "></div>
-            </StyledItem>
+                    <div className="dummy-div-for-height "></div>
+                </StyledItem>
+            </>
         )
     }
 }

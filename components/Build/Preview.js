@@ -12,11 +12,11 @@ const PreviewStyle = styled.div`
     .launch-btn {
         margin: 50px auto;
         font-size: 40px;
-        background-color: ${props => props.theme.red};
+        background-color: ${props => props.theme.green};
         color: white;
         &:hover {
-            background-color: ${props => props.theme.green};
-            color: white;
+            background-color: gold;
+            color: black;
         }
     }
 `

@@ -201,7 +201,7 @@ class CoverPicker extends React.Component {
                             ]}
                         >
                             {(updateUser, { error }) => {
-                                console.log('error = ', error)
+                                // console.log('error = ', error)
                                 return (
                                     <div
                                         onClick={() => {
