@@ -14,6 +14,16 @@ export const PageWrapper = styled.div`
     display: flex;
     flex-direction: column;
     margin-bottom: 100px;
+
+    .example-link {
+        text-align: center;
+        margin-bottom: 60px;
+        a {
+            color: green;
+            font-weight: bold;
+            text-decoration: underline;
+        }
+    }
 `
 
 export const Banner = styled.div`
@@ -135,7 +145,7 @@ export const ThreeSteps = styled.div`
         margin: 0 auto;
 
         @media (min-width: 768px) {
-            margin: 80px auto;
+            margin: 80px auto 20px;
         }
     }
 

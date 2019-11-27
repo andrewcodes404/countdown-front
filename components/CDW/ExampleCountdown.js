@@ -27,7 +27,7 @@ const now = new Date()
 const year = now.getFullYear()
 const month = ('0' + (now.getMonth() + 1)).slice(-2)
 // const day = ('0' + now.getDate()).slice(-2)
-const day = '15'
+const day = now.getHours()
 
 // const theDate = year + month + day
 const theDate = 20191201
@@ -41,9 +41,10 @@ class CDW extends React.Component {
             library: [],
             showItem: '',
             lightbox: '',
-            id: this.props.router.query.id,
+            id: 'ck0gt6u5v001p0875j00s4jqj',
+            // id: 'ck3bhgd05001c0711oqkatqya',
             showMessage: true,
-            removeBlur: false,
+            removeBlur: true,
         }
     }
 
@@ -115,31 +116,9 @@ class CDW extends React.Component {
                 />
 
                 {/* THE TIMER --- THE TIMER --- THE TIMER */}
-                <Timer theDate={theDate} name={this.state.name} />
+                {/* <Timer theDate={theDate} name={this.state.name} /> */}
 
                 {/* THE MESSAGE --- THE MESSAGE --- THE MESSAGE ---  */}
-
-                {this.state.showMessage && theDate > 20191130 && (
-                    <Message
-                        onClick={() => {
-                            this.handleCloseMessage()
-                        }}
-                    >
-                        <div
-                            className={`message-wrapper  ${this.state
-                                .removeBlur && 'fade-out'}`}
-                        >
-                            <div className="message-text">
-                                <div className="message-close-btn">
-                                    <Close className="message-close-btn-x" />
-                                </div>
-
-                                {/* <span>{this.state.name} says...</span> */}
-                                <span>{this.state.message}</span>
-                            </div>
-                        </div>
-                    </Message>
-                )}
 
                 <div
                     className={`blur-me  ${this.state.removeBlur &&

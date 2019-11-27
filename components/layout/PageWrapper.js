@@ -25,7 +25,10 @@ class PageWrapper extends React.Component {
         // const loggedIn = false
 
         // have no pagewrapper for CDW page
-        if (this.props.router.pathname === '/cdw') {
+        if (
+            this.props.router.pathname === '/cdw' ||
+            this.props.router.pathname === '/example'
+        ) {
             return (
                 <>
                     {React.Children.map(this.props.children, child =>

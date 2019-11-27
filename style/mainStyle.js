@@ -177,7 +177,22 @@ blockquote {
 }
 
 
+ @keyframes move-horizontal {
+        0% {
+            left: 0;
+        }
+        50% {
+            left: 100%;
+        }
+        100% {
+            left: 0;
+        }
+    }
 
+
+
+button{outline: none !important;}
+button:focus {outline:none !important;;}
 
 `
 

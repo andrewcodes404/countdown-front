@@ -1,4 +1,5 @@
 import React from 'react'
+import Link from 'next/link'
 
 //comps
 import UserRegister from '../user/UserRegister'
@@ -98,16 +99,16 @@ class Home extends React.Component {
                                     link with friends &amp; family.
                                 </p>
                             </div>
-
-                            {/* <h2 className="three-steps-headline">
-                            Have look at an example here{' '}
-                            <Link to="/example/xmas">
-                                example-xmas-calendar
-                            </Link>{' '}
-                        </h2> */}
                         </div>
                     </div>
                 </ThreeSteps>
+
+                <h2 className="example-link">
+                    Have look at an example here{' '}
+                    <Link href="/example">
+                        <a target="_blank">example-xmas-calendar</a>
+                    </Link>
+                </h2>
 
                 <Login id="login">
                     <UserRegister />
