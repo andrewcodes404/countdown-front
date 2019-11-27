@@ -26,11 +26,11 @@ import {
 const now = new Date()
 const year = now.getFullYear()
 const month = ('0' + (now.getMonth() + 1)).slice(-2)
-// const day = ('0' + now.getDate()).slice(-2)
-const day = '15'
+const day = ('0' + now.getDate()).slice(-2)
+// const day = '15'
 
-// const theDate = year + month + day
-const theDate = 20191201
+const theDate = year + month + day
+// const theDate = 20191201
 
 class CDW extends React.Component {
     constructor(props) {
