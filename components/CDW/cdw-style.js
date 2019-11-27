@@ -170,7 +170,8 @@ export const Grid = styled.div`
     display: flex;
     flex-wrap: wrap;
     position: relative;
-    height: 100vh;
+    max-height: calc(100vh - 40px);
+    margin-top: 40px;
 `
 
 export const Cover = styled.div`
@@ -220,7 +221,7 @@ export const Item = styled.div`
 
     @media (min-width: 500px) {
         width: 16.6666vw;
-        height: 25vh;
+        height: calc(25vh - 10px);
     }
 
     &:hover ${ImageExpand} {
@@ -293,6 +294,78 @@ export const Item = styled.div`
                 color: red;
                 animation: shake 1s;
             }
+        }
+    }
+`
+export const TopBannerStyle = styled.div`
+    position: fixed;
+    top: 0;
+    /* bottom: 0; */
+    right: 0;
+    left: 0;
+    z-index: 2;
+    background: red;
+    /* padding: 10px; */
+    height: 40px;
+
+    display: flex;
+    justify-content: center;
+
+    p {
+        margin: 0;
+        font-size: 18px;
+    }
+
+    .banner-wrapper {
+        display: flex;
+        justify-content: space-between;
+        width: 95%;
+        /* max-width: 1300px; */
+        margin: 0 auto;
+    }
+
+    .item-left,
+    .item-right {
+        display: flex;
+        align-items: center;
+    }
+
+    .item-left {
+        a {
+            color: white;
+        }
+    }
+
+    .hand {
+        font-size: 28px;
+        margin-left: 20px;
+        animation: shake 1.5s 1s infinite;
+    }
+
+    .icons {
+        display: flex;
+        margin-left: 20px;
+    }
+
+    .share-btn:focus {
+        /* border: 5px solid green; */
+        outline: none;
+    }
+
+    .icon-wrapper {
+    }
+
+    .icon {
+        width: 25px;
+        margin-right: 20px;
+        color: white;
+
+        display: flex;
+        justify-content: center;
+        transition: 0.2s;
+        cursor: pointer;
+        &:hover {
+            background: gold;
         }
     }
 `

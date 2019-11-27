@@ -37,8 +37,10 @@
         "react-countdown-now": "^2.1.2",
         "react-dom": "^16.9.0",
         "react-google-recaptcha": "^2.0.1",
+        "react-google-url-shortner": "^1.0.0",
         "react-reorder": "^3.0.0-alpha.7",
         "react-scroll-into-view": "^1.5.3",
+        "react-share": "^3.0.1",
         "react-sortable-hoc": "^1.10.1",
         "styled-components": "^4.3.2",
         "styled-normalize": "^8.0.6"
