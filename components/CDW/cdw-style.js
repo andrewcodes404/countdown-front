@@ -181,8 +181,7 @@ export const Cover = styled.div`
     left: 0;
     right: 0;
 
-    /* background: palegoldenrod; */
-    /* z-index: 1; */
+    height: calc(100vh - 40px);
     img {
         object-fit: cover;
         height: 100%;

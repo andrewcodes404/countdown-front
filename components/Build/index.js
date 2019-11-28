@@ -60,8 +60,8 @@ class Build extends React.Component {
             imgLeft: 24 - this.props.user.library.length,
             imgCountComplete: '',
             imgCount: '',
-            coverPicked: this.props.user.cover,
-            coverUrl: this.props.user.cover,
+            coverPicked: this.props.user.coverFull,
+            coverUrl: this.props.user.coverFull,
             xmasMessage: this.props.user.message,
         }
     }
@@ -71,21 +71,9 @@ class Build extends React.Component {
         this.setState({
             currentIndexTotal,
         })
-    }
 
-    // componentDidUpdate(prevProps) {
-    //     // Typical usage (don't forget to compare props):
-    //     if (this.props.libraryItems !== prevProps.libraryItems) {
-    //         this.setState(
-    //             {
-    //                 library: this.props.libraryItems,
-    //             },
-    //             () => {
-    //                 console.log('this.state 🍏 = ', this.state)
-    //             }
-    //         )
-    //     }
-    // }
+        console.log('this.props 👍 = ', this.props)
+    }
 
     uploadWidget = (name, id, imgCount) => {
         const cloudFolder = `advent/${name}_${id}`
@@ -239,7 +227,7 @@ class Build extends React.Component {
 
                             <div>
                                 {imgCount === 24 &&
-                                this.props.user.cover &&
+                                this.props.user.coverFull &&
                                 this.props.user.message ? (
                                     <Preview user={this.props.user} />
                                 ) : (
@@ -249,8 +237,8 @@ class Build extends React.Component {
                                             this.state.imgCountComplete
                                         }
                                         imgCount={imgCount}
-                                        coverPicked={this.props.user.cover}
-                                        coverUrl={this.props.user.cover}
+                                        coverPicked={this.props.user.coverFull}
+                                        coverFull={this.props.user.coverFull}
                                         xmasMessage={this.props.user.message}
                                     />
                                 )}
