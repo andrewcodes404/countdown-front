@@ -40,130 +40,143 @@ const Covers = styled.div`
 
 const coverFilename = [
     {
-        name: 'jingle bells',
-        img:
-            'https://res.cloudinary.com/countdownwow/image/upload/w_400,h_300,c_scale/v1574329300/covers/joanna-kosinska-xLGtGvH0A8g-unsplash_qrd9hk.jpg',
-        imgFull:
-            'https://res.cloudinary.com/countdownwow/image/upload/v1574329300/covers/joanna-kosinska-xLGtGvH0A8g-unsplash_qrd9hk.jpg',
-    },
-    {
-        name: 'snow',
-        img:
-            'https://res.cloudinary.com/countdownwow/image/upload/w_400,h_300,c_scale/v1574329300/covers/jonathan-knepper-9GMO0Sxyw_Y-unsplash_lfukgx.jpg',
-        imgFull:
-            'https://res.cloudinary.com/countdownwow/image/upload/v1574329300/covers/jonathan-knepper-9GMO0Sxyw_Y-unsplash_lfukgx.jpg',
-    },
-    {
         name: 'Holiday tree with decorations',
-        img:
-            'https://res.cloudinary.com/countdownwow/image/upload/w_400,h_300,c_scale/v1574329299/covers/rodion-kutsaev-ySNkCkdKyTY-unsplash_quhn8c.jpg',
-        imgFull:
+        coverFull:
             'https://res.cloudinary.com/countdownwow/image/upload/v1574329299/covers/rodion-kutsaev-ySNkCkdKyTY-unsplash_quhn8c.jpg',
+        cover200:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_200/v1574329299/covers/rodion-kutsaev-ySNkCkdKyTY-unsplash_quhn8c.jpg',
+        cover600:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_600/v1574329299/covers/rodion-kutsaev-ySNkCkdKyTY-unsplash_quhn8c.jpg',
+        cover3000:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_3000/v1574329299/covers/rodion-kutsaev-ySNkCkdKyTY-unsplash_quhn8c.jpg',
     },
     {
         name: 'Pine brnaches',
-        img:
-            'https://res.cloudinary.com/countdownwow/image/upload/w_400,h_300,c_scale/v1574329299/covers/kieran-white-SBdmQcW8qag-unsplash_xrdfgl.jpg',
-        imgFull:
+        coverFull:
             'https://res.cloudinary.com/countdownwow/image/upload/v1574329299/covers/kieran-white-SBdmQcW8qag-unsplash_xrdfgl.jpg',
+        cover200:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_200/v1574329299/covers/kieran-white-SBdmQcW8qag-unsplash_xrdfgl.jpg',
+        cover600:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_600/v1574329299/covers/kieran-white-SBdmQcW8qag-unsplash_xrdfgl.jpg',
+        cover3000:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_3000/v1574329299/covers/kieran-white-SBdmQcW8qag-unsplash_xrdfgl.jpg',
     },
-    {
-        name: 'Wrapping Paper',
-        img:
-            'https://res.cloudinary.com/countdownwow/image/upload/w_400,h_300,c_scale/v1574329299/covers/freestocks-org-spP6LqxN0-g-unsplash_uzsgvj.jpg',
-        imgFull:
-            'https://res.cloudinary.com/countdownwow/image/upload/v1574329299/covers/freestocks-org-spP6LqxN0-g-unsplash_uzsgvj.jpg',
-    },
-    {
-        name: 'Holiday Decorations',
-        img:
-            'https://res.cloudinary.com/countdownwow/image/upload/w_400,h_300,c_scale/v1574329299/covers/joanna-kosinska-LOCPyTogWHU-unsplash_nwy9r9.jpg',
-        imgFull:
-            'https://res.cloudinary.com/countdownwow/image/upload/v1574329299/covers/joanna-kosinska-LOCPyTogWHU-unsplash_nwy9r9.jpg',
-    },
+
     {
         name: 'Presents',
-        img:
-            'https://res.cloudinary.com/countdownwow/image/upload/w_400,h_300,c_scale/v1574329298/covers/freestocks-org-PxM8aeJbzvk-unsplash_atlxg7.jpg',
-        imgFull:
+        coverFull:
             'https://res.cloudinary.com/countdownwow/image/upload/v1574329298/covers/freestocks-org-PxM8aeJbzvk-unsplash_atlxg7.jpg',
+        cover200:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_200/v1574329298/covers/freestocks-org-PxM8aeJbzvk-unsplash_atlxg7.jpg',
+        cover600:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_600/v1574329298/covers/freestocks-org-PxM8aeJbzvk-unsplash_atlxg7.jpg',
+        cover3000:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_3000/v1574329298/covers/freestocks-org-PxM8aeJbzvk-unsplash_atlxg7.jpg',
     },
     {
         name: 'Santa Mug',
-        img:
-            'https://res.cloudinary.com/countdownwow/image/upload/w_400,h_300,c_scale/v1574329298/covers/drew-coffman-UIlHiyFy0Wk-unsplash_i0lsh8.jpg',
-        imgFull:
+        coverFull:
             'https://res.cloudinary.com/countdownwow/image/upload/v1574329298/covers/drew-coffman-UIlHiyFy0Wk-unsplash_i0lsh8.jpg',
+        cover200:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_200/v1574329298/covers/drew-coffman-UIlHiyFy0Wk-unsplash_i0lsh8.jpg',
+        cover600:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_600/v1574329298/covers/drew-coffman-UIlHiyFy0Wk-unsplash_i0lsh8.jpg',
+        cover3000:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_3000/v1574329298/covers/drew-coffman-UIlHiyFy0Wk-unsplash_i0lsh8.jpg',
     },
-    {
-        name: 'Festive Dog',
-        img:
-            'https://res.cloudinary.com/countdownwow/image/upload/w_400,h_300,c_scale/v1574329298/covers/jakob-owens-mpnqu9o4b9w-unsplash_whlu5e.jpg',
-        imgFull:
-            'https://res.cloudinary.com/countdownwow/image/upload/v1574329298/covers/jakob-owens-mpnqu9o4b9w-unsplash_whlu5e.jpg',
-    },
-    {
-        name: 'Decorations',
-        img:
-            'https://res.cloudinary.com/countdownwow/image/upload/w_400,h_300,c_scale/v1574329298/covers/freestocks-org-r0eEDn1GAKw-unsplash_m44d5m.jpg',
-        imgFull:
-            'https://res.cloudinary.com/countdownwow/image/upload/v1574329298/covers/freestocks-org-r0eEDn1GAKw-unsplash_m44d5m.jpg',
-    },
-    {
-        name: 'Decorations',
-        img:
-            'https://res.cloudinary.com/countdownwow/image/upload/w_400,h_300,c_scale/v1574329298/covers/freestocks-org--Qf9JKLysUg-unsplash_jz5oi6.jpg',
-        imgFull:
-            'https://res.cloudinary.com/countdownwow/image/upload/v1574329298/covers/freestocks-org--Qf9JKLysUg-unsplash_jz5oi6.jpg',
-    },
+
     {
         name: 'Santa Decoration',
-        img:
-            'https://res.cloudinary.com/countdownwow/image/upload/w_400,h_300,c_scale/v1574329296/covers/caleb-woods-xxmszPRm_ck-unsplash_rxhmfx.jpg',
-        imgFull:
+        coverFull:
             'https://res.cloudinary.com/countdownwow/image/upload/v1574329296/covers/caleb-woods-xxmszPRm_ck-unsplash_rxhmfx.jpg',
+        cover200:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_200/v1574329296/covers/caleb-woods-xxmszPRm_ck-unsplash_rxhmfx.jpg',
+        cover600:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_600/v1574329296/covers/caleb-woods-xxmszPRm_ck-unsplash_rxhmfx.jpg',
+        cover3000:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_3000/v1574329296/covers/caleb-woods-xxmszPRm_ck-unsplash_rxhmfx.jpg',
     },
     {
         name: 'Frozen Bubble',
-        img:
-            'https://res.cloudinary.com/countdownwow/image/upload/w_400,h_300,c_scale/v1574329163/covers/aaron-burden-kWUBVVU7yj0-unsplash_k8cxjv.jpg',
-        imgFull:
+        coverFull:
             'https://res.cloudinary.com/countdownwow/image/upload/v1574329163/covers/aaron-burden-kWUBVVU7yj0-unsplash_k8cxjv.jpg',
+        cover200:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_200/v1574329163/covers/aaron-burden-kWUBVVU7yj0-unsplash_k8cxjv.jpg',
+        cover600:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_600/v1574329163/covers/aaron-burden-kWUBVVU7yj0-unsplash_k8cxjv.jpg',
+        cover3000:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_3000/v1574329163/covers/aaron-burden-kWUBVVU7yj0-unsplash_k8cxjv.jpg',
     },
     {
         name: 'Holiday Tree',
-        img:
-            'https://res.cloudinary.com/countdownwow/image/upload/w_400,h_300,c_scale/v1574329138/covers/arun-kuchibhotla-cRfWUqkr0-s-unsplash_xf305y.jpg',
-        imgFull:
+        coverFull:
             'https://res.cloudinary.com/countdownwow/image/upload/v1574329138/covers/arun-kuchibhotla-cRfWUqkr0-s-unsplash_xf305y.jpg',
+        cover200:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_200/v1574329138/covers/arun-kuchibhotla-cRfWUqkr0-s-unsplash_xf305y.jpg',
+        cover600:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_600/v1574329138/covers/arun-kuchibhotla-cRfWUqkr0-s-unsplash_xf305y.jpg',
+        cover3000:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_3000/v1574329138/covers/arun-kuchibhotla-cRfWUqkr0-s-unsplash_xf305y.jpg',
     },
     {
         name: 'sledge',
-        img:
-            'https://res.cloudinary.com/countdownwow/image/upload/w_400,h_300,c_scale/v1574450454/covers/jesse-orrico-rnguvzoG-x8-unsplash_b0mdzz.jpg',
-        imgFull:
+        coverFull:
             'https://res.cloudinary.com/countdownwow/image/upload/v1574450454/covers/jesse-orrico-rnguvzoG-x8-unsplash_b0mdzz.jpg',
+        cover200:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_200/v1574450454/covers/jesse-orrico-rnguvzoG-x8-unsplash_b0mdzz.jpg',
+        cover600:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_600/v1574450454/covers/jesse-orrico-rnguvzoG-x8-unsplash_b0mdzz.jpg',
+        cover3000:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_3000/v1574450454/covers/jesse-orrico-rnguvzoG-x8-unsplash_b0mdzz.jpg',
     },
-    {
-        name: 'cheers',
-        img:
-            'https://res.cloudinary.com/countdownwow/image/upload/w_400,h_300,c_scale/v1574450453/covers/kelsey-chance-tAH2cA_BL5g-unsplash_ssoraw.jpg',
-        imgFull:
-            'https://res.cloudinary.com/countdownwow/image/upload/v1574450453/covers/kelsey-chance-tAH2cA_BL5g-unsplash_ssoraw.jpg',
-    },
-    {
-        name: 'ticker tape',
-        img:
-            'https://res.cloudinary.com/countdownwow/image/upload/w_400,h_300,c_scale/v1574450451/covers/jason-leung-Xaanw0s0pMk-unsplash_fjd6u9.jpg',
-        imgFull:
-            'https://res.cloudinary.com/countdownwow/image/upload/v1574450451/covers/jason-leung-Xaanw0s0pMk-unsplash_fjd6u9.jpg',
-    },
+
     {
         name: 'wreath',
-        img:
-            'https://res.cloudinary.com/countdownwow/image/upload/w_400,h_300,c_scale/v1574450449/covers/erwan-hesry-e9jV1ZyrOmg-unsplash_zbhlcq.jpg',
-        imgFull:
+        coverFull:
             'https://res.cloudinary.com/countdownwow/image/upload/v1574450449/covers/erwan-hesry-e9jV1ZyrOmg-unsplash_zbhlcq.jpg',
+        cover200:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_200/v1574450449/covers/erwan-hesry-e9jV1ZyrOmg-unsplash_zbhlcq.jpg',
+        cover600:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_600/v1574450449/covers/erwan-hesry-e9jV1ZyrOmg-unsplash_zbhlcq.jpg',
+        cover3000:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_3000/v1574450449/covers/erwan-hesry-e9jV1ZyrOmg-unsplash_zbhlcq.jpg',
+    },
+    {
+        name: 'snow',
+        coverFull:
+            'https://res.cloudinary.com/countdownwow/image/upload/v1574329300/covers/jonathan-knepper-9GMO0Sxyw_Y-unsplash_lfukgx.jpg',
+        cover200:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_200/v1574329300/covers/jonathan-knepper-9GMO0Sxyw_Y-unsplash_lfukgx.jpg',
+        cover600:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_600/v1574329300/covers/jonathan-knepper-9GMO0Sxyw_Y-unsplash_lfukgx.jpg',
+        cover3000:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_3000/v1574329300/covers/jonathan-knepper-9GMO0Sxyw_Y-unsplash_lfukgx.jpg',
+    },
+
+    {
+        name: 'Santa in the snow',
+        coverFull:
+            'https://res.cloudinary.com/countdownwow/image/upload/v1574937560/covers/osman-rana-u5m61CHska4-unsplash_io08pt.jpg',
+
+        cover200:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_200/v1574937560/covers/osman-rana-u5m61CHska4-unsplash_io08pt.jpg',
+        cover600:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_600/v1574937560/covers/osman-rana-u5m61CHska4-unsplash_io08pt.jpg',
+
+        cover3000:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_3000/v1574937560/covers/osman-rana-u5m61CHska4-unsplash_io08pt.jpg',
+    },
+
+    {
+        name: 'Snowy Letterbox',
+        coverFull:
+            'https://res.cloudinary.com/countdownwow/image/upload/v1574937560/covers/les-anderson-7QuEYNRNUeA-unsplash_xfxznd.jpg',
+        cover200:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_200/v1574937560/covers/les-anderson-7QuEYNRNUeA-unsplash_xfxznd.jpg',
+        cover600:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_600/v1574937560/covers/les-anderson-7QuEYNRNUeA-unsplash_xfxznd.jpg',
+        cover3000:
+            'https://res.cloudinary.com/countdownwow/image/upload/c_scale,q_auto,w_3000/v1574937560/covers/les-anderson-7QuEYNRNUeA-unsplash_xfxznd.jpg',
     },
 ]
 
@@ -186,41 +199,54 @@ class CoverPicker extends React.Component {
         return (
             <Covers>
                 <div className="covers-grid">
-                    {coverFilename.map((el, index) => (
-                        <Mutation
-                            key={index}
-                            mutation={UPDATE_USER_COVER}
-                            variables={{
-                                id: this.props.user.id,
-                                cover: el.imgFull,
-                            }}
-                            refetchQueries={[
-                                {
-                                    query: USER_LOGGEDIN,
-                                },
-                            ]}
-                        >
-                            {(updateUser, { error }) => {
-                                // console.log('error = ', error)
-                                return (
-                                    <div
-                                        onClick={() => {
-                                            this.changeCoverPick(el.imgFull)
-                                            updateUser()
-                                        }}
-                                        // className="covers-item"
-                                        className={`covers-item ${
-                                            this.state.borderMe === el.imgFull
-                                                ? 'make-red'
-                                                : 'boo'
-                                        }`}
-                                    >
-                                        <img src={el.img} alt={el.name} />
-                                    </div>
-                                )
-                            }}
-                        </Mutation>
-                    ))}
+                    {coverFilename.map((el, index) => {
+                        // console.log('el = ', el)
+                        // console.log('this.props = ', this.props)
+                        return (
+                            <Mutation
+                                key={index}
+                                mutation={UPDATE_USER_COVER}
+                                variables={{
+                                    id: this.props.user.id,
+                                    coverFull: el.coverFull,
+                                    cover200: el.cover200,
+                                    cover600: el.cover600,
+                                    cover3000: el.cover3000,
+                                }}
+                                refetchQueries={[
+                                    {
+                                        query: USER_LOGGEDIN,
+                                    },
+                                ]}
+                            >
+                                {(updateUser, { error }) => {
+                                    console.log('error 💣= ', error)
+                                    return (
+                                        <div
+                                            onClick={() => {
+                                                this.changeCoverPick(
+                                                    el.coverFull
+                                                )
+                                                updateUser()
+                                            }}
+                                            // className="covers-item"
+                                            className={`covers-item ${
+                                                this.state.borderMe ===
+                                                el.coverFull
+                                                    ? 'make-red'
+                                                    : 'boo'
+                                            }`}
+                                        >
+                                            <img
+                                                src={el.cover600}
+                                                alt={el.name}
+                                            />
+                                        </div>
+                                    )
+                                }}
+                            </Mutation>
+                        )
+                    })}
                 </div>
             </Covers>
         )

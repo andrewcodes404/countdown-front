@@ -62,7 +62,7 @@ class Checklist extends React.Component {
                     </div>
                 )}
 
-                {this.props.coverUrl ? (
+                {this.props.coverFull ? (
                     <p>
                         Choose a cover <span className="tick"> &#10003;</span>
                     </p>
