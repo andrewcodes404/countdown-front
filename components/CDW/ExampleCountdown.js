@@ -37,7 +37,7 @@ class CDW extends React.Component {
         super(props)
         this.state = {
             name: '',
-            cover: '',
+            coverFull: '',
             library: [],
             showItem: '',
             lightbox: '',
@@ -67,7 +67,7 @@ class CDW extends React.Component {
                 })
                 this.setState({
                     name: user.name,
-                    cover: user.cover,
+                    coverFull: user.coverFull,
                     library: randomizedLibrary,
                     message: user.message,
                 })
@@ -149,7 +149,7 @@ class CDW extends React.Component {
 
                     <Grid>
                         <Cover>
-                            <img src={this.state.cover} alt="" />
+                            <img src={this.state.coverFull} alt="" />
                         </Cover>
 
                         {theDate > 20191130 && (

@@ -37,7 +37,7 @@ class CDW extends React.Component {
         super(props)
         this.state = {
             name: '',
-            cover: '',
+            coverFull: '',
             library: [],
             showItem: '',
             lightbox: '',
