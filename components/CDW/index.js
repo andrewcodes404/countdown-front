@@ -145,8 +145,8 @@ class CDW extends React.Component {
                 )}
 
                 <div
-                    className={`blur-me  ${this.state.removeBlur &&
-                        'un-blur-me'}`}
+                    className={`below-banner-wrapper  blur-me  ${this.state
+                        .removeBlur && 'un-blur-me'}`}
                 >
                     {/* THE MODAL ---THE MODAL ---THE MODAL --- */}
                     {this.state.lightbox && (

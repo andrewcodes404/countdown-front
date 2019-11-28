@@ -4,8 +4,7 @@ import { Query, withApollo } from 'react-apollo'
 import { GET_CDW } from '../../lib/graphqlTags'
 
 // comps
-import Timer from './Timer'
-import TopBanner from './TopBanner'
+import TopBannerExample from './TopBannerExample'
 
 // material ui
 import Close from '@material-ui/icons/Close'
@@ -44,7 +43,7 @@ class CDW extends React.Component {
             // id: 'ck0gt6u5v001p0875j00s4jqj',
             id: 'ck3bhgd05001c0711oqkatqya',
             showMessage: true,
-            removeBlur: true,
+            removeBlur: false,
         }
     }
 
@@ -111,7 +110,7 @@ class CDW extends React.Component {
     render() {
         return (
             <PageWrapper>
-                <TopBanner
+                <TopBannerExample
                     url={`https://countdownwow.com/cdw?=${this.state.id}`}
                 />
 
@@ -119,10 +118,34 @@ class CDW extends React.Component {
                 {/* <Timer theDate={theDate} name={this.state.name} /> */}
 
                 {/* THE MESSAGE --- THE MESSAGE --- THE MESSAGE ---  */}
+                {this.state.showMessage && (
+                    <Message
+                        onClick={() => {
+                            this.handleCloseMessage()
+                        }}
+                    >
+                        <div
+                            className={`message-wrapper  ${this.state
+                                .removeBlur && 'fade-out'}`}
+                        >
+                            <div className="message-text">
+                                <div className="message-close-btn">
+                                    <Close className="message-close-btn-x" />
+                                </div>
+
+                                {/* <span>{this.state.name} says...</span> */}
+                                <span>
+                                    Happy Xams from CountDownWow, this is an
+                                    example calandar 🎅 🎄 🎁 💝
+                                </span>
+                            </div>
+                        </div>
+                    </Message>
+                )}
 
                 <div
-                    className={`blur-me  ${this.state.removeBlur &&
-                        'un-blur-me'}`}
+                    className={`below-banner-wrapper blur-me  ${this.state
+                        .removeBlur && 'un-blur-me'}`}
                 >
                     {/* THE MODAL ---THE MODAL ---THE MODAL --- */}
                     {this.state.lightbox && (
