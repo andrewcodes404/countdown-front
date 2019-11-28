@@ -24,10 +24,6 @@ class TopBanner extends React.Component {
         const hours = now.getHours()
         const mins = now.getMinutes()
 
-        console.log('hours = ', hours)
-        console.log('mins = ', mins)
-
-        console.log('this.props 💁‍♂️ = ', this.props)
         return (
             <TopBannerStyle>
                 <div className="banner-wrapper">

@@ -13,7 +13,6 @@ import Build from '../components/Build'
 
 class Index extends React.Component {
     componentDidMount() {
-        // console.log('yes the build page comp mounted 🏇')
         if (!this.props.loggedIn) {
             Router.push('/')
         }

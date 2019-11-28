@@ -21,7 +21,6 @@ const QUERY_ALL_USERS = gql`
 `
 
 const User = props => {
-    // console.log('props = ', props)
     return <p>{props.user.name}</p>
 }
 

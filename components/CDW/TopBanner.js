@@ -20,7 +20,6 @@ class TopBanner extends React.Component {
         super(props)
         // Don't call this.setState() here!
 
-        console.log('this.props 🤠 = ', this.props)
         this.state = {
             // url: `https://countdownwow.com/cdw?=${this.props.id}`,
             message: `WOWSERS TROUSERS ❄️ Check out this amazing digital advent calendar 🎅📆⏱️ `,
@@ -28,12 +27,7 @@ class TopBanner extends React.Component {
         }
     }
 
-    // componentDidMount() {
-    //     this.setState({})
-    // }
-
     render() {
-        console.log('this.props 💁‍♂️ = ', this.props)
         return (
             <TopBannerStyle>
                 <div className="banner-wrapper">
