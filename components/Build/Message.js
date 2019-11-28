@@ -79,9 +79,7 @@ class comp_name extends React.Component {
         const { id, type, value } = e.target
         const val = type === 'number' ? parseFloat(value) : value
 
-        this.setState({ [id]: val, showAlert: true }, () => {
-            // console.log('this.state.id = ', this.state)
-        })
+        this.setState({ [id]: val, showAlert: true })
     }
 
     render() {
@@ -104,7 +102,6 @@ class comp_name extends React.Component {
                             // noValidate
                             // autoComplete="off"
                             onSubmit={async e => {
-                                console.log('this.state = ', this.state)
                                 e.preventDefault()
                                 await updateUser()
                                 this.resetState()

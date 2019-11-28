@@ -49,7 +49,6 @@ class Sortable extends React.Component {
         }
     }
     componentDidMount() {
-        // console.log('componentDidMount()')
         const library = this.props.libraryItems
         library.sort((a, b) => (a.index > b.index ? 1 : -1))
         this.setState({
@@ -70,7 +69,6 @@ class Sortable extends React.Component {
     }
 
     onSortEnd = ({ oldIndex, newIndex }) => {
-        // console.log('onSortEnd ')
         this.setState(
             ({ items }) => ({
                 items: arrayMove(items, oldIndex, newIndex),
@@ -141,7 +139,6 @@ class Sortable extends React.Component {
     }
 
     render() {
-        // console.log('this .state = ', this.state)
         const { id } = this.props.user
 
         return (

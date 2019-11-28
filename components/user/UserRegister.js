@@ -31,18 +31,10 @@ class UserRegister extends Component {
     }
 
     handleConfirmPasswordChange = e => {
-        console.log('handle working')
-        console.log('this.state = ', this.state)
-
         const { id, value } = e.target
         this.setState({ [id]: value }, () => {
             if (this.state.password === this.state.confirmPassword) {
-                this.setState(
-                    { passwordsMatch: true, passwordAlert: false },
-                    () => {
-                        console.log('ITS TRUE')
-                    }
-                )
+                this.setState({ passwordsMatch: true, passwordAlert: false })
             } else {
                 this.setState({ passwordsMatch: false, passwordAlert: true })
             }
@@ -50,14 +42,12 @@ class UserRegister extends Component {
     }
 
     onChange = value => {
-        console.log('Captcha value:', value)
         this.setState({
             captcha: true,
         })
     }
 
     render() {
-        console.log('this.state = ', this.state)
         return (
             <FormWrapper>
                 <Mutation

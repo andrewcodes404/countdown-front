@@ -55,9 +55,6 @@ class Index extends React.Component {
             user,
         } = this.props
 
-        // console.log('asPath = ', asPath)
-        // console.log('this.props from nav = ', this.props)
-
         return (
             <Nav>
                 <div className="nav--logo">

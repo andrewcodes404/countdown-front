@@ -176,14 +176,6 @@ class SortableItemComp extends React.Component {
         showModal: false,
     }
 
-    handleHoverOff = () => {
-        console.log('hovver off')
-
-        // this.setState({
-        //     showModal: false,
-        // })
-    }
-
     handleTrash = () => {
         this.setState({
             showModal: true,
@@ -210,10 +202,11 @@ class SortableItemComp extends React.Component {
                             <h5>Delete this image?</h5>
 
                             <div className="modal-img">
-                                {/* <img src={secure_url} alt="" /> */}
+                                <img src={secure_url} alt="" />
+
                                 <img
                                     src={secure_url}
-                                    srcSet={`${url200} 200w, ${url600} 600w, ${url2400} 2000`}
+                                    srcSet={`${url200} 200w, ${url600} 600w, ${url2400} 2000w`}
                                     sizes="25vw"
                                 />
                             </div>
@@ -244,7 +237,7 @@ class SortableItemComp extends React.Component {
                     </Modal>
                 )}
 
-                <StyledItem onMouseLeave={this.handleHoverOff}>
+                <StyledItem>
                     <div className="number">
                         <span>{myIndex + 1}</span>
                     </div>
@@ -254,7 +247,8 @@ class SortableItemComp extends React.Component {
                     <div className="img-wrapper ">
                         <img
                             src={secure_url}
-                            srcSet={`${url200} 200w, ${url600} 600w, ${url2400} 2000`}
+                            srcSet={`${url200} 200w, ${url600} 600w, ${url2400} 2000w`}
+                            sizes="25vw"
                         />
                     </div>
 

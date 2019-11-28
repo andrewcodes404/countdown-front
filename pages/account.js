@@ -5,7 +5,6 @@ import Link from 'next/link'
 
 class Index extends React.Component {
     componentDidMount() {
-        // console.log('yes the account page comp mounted 🏇')
         if (!this.props.loggedIn) {
             Router.push('/')
         }

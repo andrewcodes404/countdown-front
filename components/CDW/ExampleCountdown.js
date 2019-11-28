@@ -59,8 +59,6 @@ class CDW extends React.Component {
             .then(result => {
                 const user = result.data.users[0]
 
-                console.log('result.data = ', result.data)
-
                 const randomizedLibrary = user.library.sort(function() {
                     return 0.5 - Math.random()
                 })

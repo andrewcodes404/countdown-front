@@ -26,11 +26,11 @@ import {
 const now = new Date()
 const year = now.getFullYear()
 const month = ('0' + (now.getMonth() + 1)).slice(-2)
-const day = ('0' + now.getDate()).slice(-2)
-// const day = '15'
+// const day = ('0' + now.getDate()).slice(-2)
+const day = '15'
 
-const theDate = year + month + day
-// const theDate = 20191201
+// const theDate = year + month + day
+const theDate = 20191201
 
 class CDW extends React.Component {
     constructor(props) {
@@ -58,17 +58,17 @@ class CDW extends React.Component {
             })
             .then(result => {
                 const user = result.data.users[0]
-
-                console.log('result.data = ', result.data)
-
                 const randomizedLibrary = user.library.sort(function() {
                     return 0.5 - Math.random()
                 })
                 this.setState({
                     name: user.name,
-                    coverFull: user.coverFull,
                     library: randomizedLibrary,
                     message: user.message,
+                    coverFull: user.coverFull,
+                    cover200: user.cover200,
+                    cover600: user.cover600,
+                    cover3000: user.cover3000,
                 })
             })
     }
@@ -122,27 +122,29 @@ class CDW extends React.Component {
 
                 {/* THE MESSAGE --- THE MESSAGE --- THE MESSAGE ---  */}
 
-                {this.state.showMessage && theDate > 20191130 && (
-                    <Message
-                        onClick={() => {
-                            this.handleCloseMessage()
-                        }}
-                    >
-                        <div
-                            className={`message-wrapper  ${this.state
-                                .removeBlur && 'fade-out'}`}
+                {this.state.message &&
+                    this.state.showMessage &&
+                    theDate > 20191130 && (
+                        <Message
+                            onClick={() => {
+                                this.handleCloseMessage()
+                            }}
                         >
-                            <div className="message-text">
-                                <div className="message-close-btn">
-                                    <Close className="message-close-btn-x" />
-                                </div>
+                            <div
+                                className={`message-wrapper  ${this.state
+                                    .removeBlur && 'fade-out'}`}
+                            >
+                                <div className="message-text">
+                                    <div className="message-close-btn">
+                                        <Close className="message-close-btn-x" />
+                                    </div>
 
-                                {/* <span>{this.state.name} says...</span> */}
-                                <span>{this.state.message}</span>
+                                    {/* <span>{this.state.name} says...</span> */}
+                                    <span>{this.state.message}</span>
+                                </div>
                             </div>
-                        </div>
-                    </Message>
-                )}
+                        </Message>
+                    )}
 
                 <div
                     className={`below-banner-wrapper  blur-me  ${this.state
@@ -173,7 +175,12 @@ class CDW extends React.Component {
 
                     <Grid>
                         <Cover>
-                            <img src={this.state.coverFull} alt="" />
+                            <img
+                                // src={this.state.coverFull}
+                                alt=""
+                                src={this.state.coverfull}
+                                srcSet={`${this.state.cover200} 200w, ${this.state.cover600} 600w, ${this.state.cover3000} 2000w`}
+                            />
                         </Cover>
 
                         {theDate > 20191130 && (

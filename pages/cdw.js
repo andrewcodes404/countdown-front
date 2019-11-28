@@ -6,21 +6,8 @@ import Router from 'next/router'
 import CDW from '../components/CDW'
 
 class Index extends React.Component {
-    // componentDidMount() {
-    //     if (!this.props.loggedIn) {
-    //         Router.push('/')
-    //     }
-    // }
-
     render() {
-        // if (!this.props.loggedIn) return null
-
-        return (
-            <CDW
-            // loggedIn={this.props.loggedIn}
-            // user={this.props.userLoggedIn}
-            />
-        )
+        return <CDW />
     }
 }
 

@@ -185,7 +185,7 @@ class CoverPicker extends React.Component {
         super(props)
 
         this.state = {
-            borderMe: this.props.user.cover,
+            borderMe: this.props.user.coverFull,
         }
     }
 
@@ -200,8 +200,6 @@ class CoverPicker extends React.Component {
             <Covers>
                 <div className="covers-grid">
                     {coverFilename.map((el, index) => {
-                        // console.log('el = ', el)
-                        // console.log('this.props = ', this.props)
                         return (
                             <Mutation
                                 key={index}
@@ -220,7 +218,6 @@ class CoverPicker extends React.Component {
                                 ]}
                             >
                                 {(updateUser, { error }) => {
-                                    console.log('error 💣= ', error)
                                     return (
                                         <div
                                             onClick={() => {
@@ -238,8 +235,11 @@ class CoverPicker extends React.Component {
                                             }`}
                                         >
                                             <img
-                                                src={el.cover600}
+                                                // src={el.cover600}
                                                 alt={el.name}
+                                                src={el.coverfull}
+                                                srcSet={`${el.cover200} 200w, ${el.cover600} 600w, ${el.cover3000} 2000w`}
+                                                sizes="25vw"
                                             />
                                         </div>
                                     )
