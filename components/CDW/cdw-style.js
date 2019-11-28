@@ -4,6 +4,10 @@ export const PageWrapper = styled.div`
     /* border: 1px solid yellow; */
     background: black;
 
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+
     .blur-me {
         filter: grayscale(20%) blur(3px);
     }
@@ -11,6 +15,109 @@ export const PageWrapper = styled.div`
     .un-blur-me {
         transition: filter 0.6s;
         filter: grayscale(0) blur(0px);
+    }
+
+    .below-banner-wrapper {
+        flex: 1;
+    }
+`
+
+export const TopBannerStyle = styled.div`
+    /* position: fixed; */
+    /* top: 0; */
+    /* bottom: 0; */
+    /* right: 0; */
+    /* left: 0; */
+    z-index: 2;
+    background: red;
+    /* padding: 10px; */
+    min-height: 40px;
+    padding: 10px 0;
+
+    display: flex;
+    justify-content: center;
+
+    p {
+        margin: 0;
+        font-size: 18px;
+    }
+
+    @media (min-width: 1200px) {
+        height: 40px;
+        padding: unset;
+    }
+
+    .banner-wrapper {
+        display: flex;
+
+        width: 95%;
+        /* max-width: 1300px; */
+        margin: 0 auto;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        @media (min-width: 1200px) {
+            flex-direction: row;
+            justify-content: space-between;
+        }
+    }
+
+    .item-left,
+    .item-right {
+        display: flex;
+        align-items: center;
+
+        padding: 5px 0;
+        @media (min-width: 1200px) {
+            padding: 0;
+        }
+
+        p {
+            font-size: 15px;
+            line-height: 1.2;
+            @media (min-width: 1200px) {
+                font-size: 16px;
+            }
+        }
+    }
+
+    .item-left {
+        a {
+            color: white;
+        }
+    }
+
+    .hand {
+        font-size: 28px;
+        margin-left: 20px;
+        animation: shake 1.5s 1s infinite;
+    }
+
+    .icons {
+        display: flex;
+        margin-left: 20px;
+    }
+
+    .share-btn:focus {
+        /* border: 5px solid green; */
+        outline: none;
+    }
+
+    .icon-wrapper {
+    }
+
+    .icon {
+        width: 25px;
+        margin-right: 20px;
+        color: white;
+
+        display: flex;
+        justify-content: center;
+        transition: 0.2s;
+        cursor: pointer;
+        &:hover {
+            background: gold;
+        }
     }
 `
 
@@ -166,14 +273,6 @@ export const Lightbox = styled.div`
     }
 `
 
-export const Grid = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    position: relative;
-    max-height: calc(100vh - 40px);
-    margin-top: 40px;
-`
-
 export const Cover = styled.div`
     position: absolute;
     top: 0;
@@ -181,7 +280,10 @@ export const Cover = styled.div`
     left: 0;
     right: 0;
 
-    height: calc(100vh - 40px);
+    /* height: calc(100vh - 40px); */
+    height: 100%;
+    width: 100%;
+
     img {
         object-fit: cover;
         height: 100%;
@@ -212,15 +314,27 @@ export const ImageExpand = styled.div`
     display: none;
 `
 
+export const Grid = styled.div`
+    display: flex;
+    flex-wrap: wrap;
+    position: relative;
+    /* max-height: calc(100vh - 40px); */
+    /* margin-top: 40px; */
+
+    height: 100%;
+    width: 100%;
+`
+
 export const Item = styled.div`
-    width: 25vw;
-    height: 16.6666vh;
+    width: 25%;
+    height: 16.6666%;
     position: relative;
     cursor: pointer;
 
     @media (min-width: 500px) {
-        width: 16.6666vw;
-        height: calc(25vh - 10px);
+        width: 16.6666%;
+        /* height: calc(25vh - 10px); */
+        height: 25%;
     }
 
     &:hover ${ImageExpand} {
@@ -293,78 +407,6 @@ export const Item = styled.div`
                 color: red;
                 animation: shake 1s;
             }
-        }
-    }
-`
-export const TopBannerStyle = styled.div`
-    position: fixed;
-    top: 0;
-    /* bottom: 0; */
-    right: 0;
-    left: 0;
-    z-index: 2;
-    background: red;
-    /* padding: 10px; */
-    height: 40px;
-
-    display: flex;
-    justify-content: center;
-
-    p {
-        margin: 0;
-        font-size: 18px;
-    }
-
-    .banner-wrapper {
-        display: flex;
-        justify-content: space-between;
-        width: 95%;
-        /* max-width: 1300px; */
-        margin: 0 auto;
-    }
-
-    .item-left,
-    .item-right {
-        display: flex;
-        align-items: center;
-    }
-
-    .item-left {
-        a {
-            color: white;
-        }
-    }
-
-    .hand {
-        font-size: 28px;
-        margin-left: 20px;
-        animation: shake 1.5s 1s infinite;
-    }
-
-    .icons {
-        display: flex;
-        margin-left: 20px;
-    }
-
-    .share-btn:focus {
-        /* border: 5px solid green; */
-        outline: none;
-    }
-
-    .icon-wrapper {
-    }
-
-    .icon {
-        width: 25px;
-        margin-right: 20px;
-        color: white;
-
-        display: flex;
-        justify-content: center;
-        transition: 0.2s;
-        cursor: pointer;
-        &:hover {
-            background: gold;
         }
     }
 `
