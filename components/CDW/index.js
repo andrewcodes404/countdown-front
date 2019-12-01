@@ -26,11 +26,11 @@ import {
 const now = new Date()
 const year = now.getFullYear()
 const month = ('0' + (now.getMonth() + 1)).slice(-2)
-// const day = ('0' + now.getDate()).slice(-2)
-const day = '15'
+const day = ('0' + now.getDate()).slice(-2)
+// const day = '15'
 
-// const theDate = year + month + day
-const theDate = 20191201
+const theDate = year + month + day
+// const theDate = 20191201
 
 class CDW extends React.Component {
     constructor(props) {
@@ -178,7 +178,7 @@ class CDW extends React.Component {
                             <img
                                 // src={this.state.coverFull}
                                 alt=""
-                                src={this.state.coverfull}
+                                src={this.state.cover200}
                                 srcSet={`${this.state.cover200} 200w, ${this.state.cover600} 600w, ${this.state.cover3000} 2000w`}
                             />
                         </Cover>
@@ -201,8 +201,9 @@ class CDW extends React.Component {
                                                 `}
                                         >
                                             <img
-                                                src={el.secure_url}
-                                                srcSet={`${el.url200} 200w, ${el.url600} 600w, ${el.url2400} 2000w`}
+                                                src={el.url200}
+                                                srcSet={`${el.url200} 200w, ${el.url600} 600w,`}
+                                                // srcSet={`${el.url200} 200w, ${el.url600} 600w, ${el.url2400} 2000w`}
                                                 sizes="min-width(576px) 25vw 16.666vw"
                                                 onClick={() => {
                                                     this.handleShowLightbox(
