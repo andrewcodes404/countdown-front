@@ -188,6 +188,8 @@ export const Message = styled.div`
         padding: 15px 50px 15px 30px;
         /* width: 90%; */
         text-align: center;
+        width: 95%
+        margin: 0 auto;
         max-width: 900px;
         span {
             font-size: 20px;
