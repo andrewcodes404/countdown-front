@@ -41,8 +41,11 @@ class TopBanner extends React.Component {
                     </div>
 
                     <div className="item-right">
-                        <p>Share this calender </p>
-                        <div className="hand">👉</div>
+                        <div className="item-right-message">
+                            <p>Share this calender </p>
+                            <div className="hand">👉</div>
+                        </div>
+
                         <div className="icons">
                             <FacebookShareButton
                                 url={this.props.url}
