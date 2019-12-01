@@ -49,13 +49,13 @@ export const TopBannerStyle = styled.div`
 
     .banner-wrapper {
         display: flex;
-
         width: 95%;
         /* max-width: 1300px; */
         margin: 0 auto;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+
         @media (min-width: 1200px) {
             flex-direction: row;
             justify-content: space-between;
@@ -84,6 +84,23 @@ export const TopBannerStyle = styled.div`
     .item-left {
         a {
             color: white;
+        }
+        text-align: center;
+    }
+
+    .item-right {
+        display: none;
+        @media (min-width: 370px) {
+            display: flex;
+        }
+    }
+
+    .item-right-message {
+        display: none;
+        @media (min-width: 565px) {
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
     }
 
