@@ -28,7 +28,7 @@
         "graphql": "^14.4.2",
         "graphql-tag": "2.10.1",
         "mailgun.js": "^2.0.1",
-        "next": "^9.0.3",
+        "next": "^9.3.2",
         "next-with-apollo": "^4.2.0",
         "prop-types": "^15.6.2",
         "react": "^16.9.0",
